@@ -1,4 +1,4 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-DRRyQEDy.js","assets/badge-C4zfDj-Y.js","assets/card-Cqvk43sN.js","assets/proxy-BvR9mUxs.js","assets/trending-up-CdP2YUwK.js","assets/Services-C2_6LL8S.js","assets/circle-check-BJ6P2_x-.js","assets/users-BljWSlF_.js","assets/Portfolio-jFdyEObj.js","assets/About-DxWATFyU.js","assets/index-C1u7carQ.js","assets/Contact-Dt7flFd_.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/Home-WEBPhTTg.js","assets/badge-BVWNPwr0.js","assets/card-jjXv-ZwK.js","assets/proxy-B8Wf2Yrr.js","assets/trending-up-DwSXwnvx.js","assets/Services-CkfNZD0f.js","assets/circle-check-CY1yxMov.js","assets/users-BHdFD3Oe.js","assets/Portfolio-BUUS-anm.js","assets/About-DZp9WGi8.js","assets/index-CIzIc9uW.js","assets/Contact-CW7mD7ai.js"])))=>i.map(i=>d[i]);
 var __defProp = Object.defineProperty;
 var __typeError = (msg) => {
   throw TypeError(msg);
@@ -75,8 +75,8 @@ function _mergeNamespaces(n, m) {
     fetch(link.href, fetchOpts);
   }
 })();
-function getDefaultExportFromCjs(x) {
-  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+function getDefaultExportFromCjs(x2) {
+  return x2 && x2.__esModule && Object.prototype.hasOwnProperty.call(x2, "default") ? x2["default"] : x2;
 }
 var jsxRuntime = { exports: {} };
 var reactJsxRuntime_production = {};
@@ -451,11 +451,11 @@ function anumber(n) {
   if (!Number.isSafeInteger(n) || n < 0)
     throw new Error("positive integer expected, got " + n);
 }
-function abytes(b, ...lengths) {
-  if (!isBytes(b))
+function abytes(b2, ...lengths) {
+  if (!isBytes(b2))
     throw new Error("Uint8Array expected");
-  if (lengths.length > 0 && !lengths.includes(b.length))
-    throw new Error("Uint8Array expected of length " + lengths + ", got length=" + b.length);
+  if (lengths.length > 0 && !lengths.includes(b2.length))
+    throw new Error("Uint8Array expected of length " + lengths + ", got length=" + b2.length);
 }
 function aexists(instance, checkFinished = true) {
   if (instance.destroyed)
@@ -485,7 +485,7 @@ const hasHexBuiltin = /* @__PURE__ */ (() => (
   // @ts-ignore
   typeof Uint8Array.from([]).toHex === "function" && typeof Uint8Array.fromHex === "function"
 ))();
-const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_, i) => i.toString(16).padStart(2, "0"));
+const hexes = /* @__PURE__ */ Array.from({ length: 256 }, (_2, i) => i.toString(16).padStart(2, "0"));
 function bytesToHex(bytes) {
   abytes(bytes);
   if (hasHexBuiltin)
@@ -584,11 +584,11 @@ function setBigUint64(view, byteOffset, value, isLE) {
   view.setUint32(byteOffset + h, wh, isLE);
   view.setUint32(byteOffset + l, wl, isLE);
 }
-function Chi(a, b, c) {
-  return a & b ^ ~a & c;
+function Chi(a, b2, c) {
+  return a & b2 ^ ~a & c;
 }
-function Maj(a, b, c) {
-  return a & b ^ a & c ^ b & c;
+function Maj(a, b2, c) {
+  return a & b2 ^ a & c ^ b2 & c;
 }
 class HashMD extends Hash {
   constructor(blockLen, outputLen, padOffset, isLE) {
@@ -831,19 +831,19 @@ class SHA256 extends HashMD {
     this.H = SHA256_IV[7] | 0;
   }
   get() {
-    const { A, B, C, D, E, F, G, H } = this;
-    return [A, B, C, D, E, F, G, H];
+    const { A, B, C, D, E: E2, F, G, H: H2 } = this;
+    return [A, B, C, D, E2, F, G, H2];
   }
   // prettier-ignore
-  set(A, B, C, D, E, F, G, H) {
+  set(A, B, C, D, E2, F, G, H2) {
     this.A = A | 0;
     this.B = B | 0;
     this.C = C | 0;
     this.D = D | 0;
-    this.E = E | 0;
+    this.E = E2 | 0;
     this.F = F | 0;
     this.G = G | 0;
-    this.H = H | 0;
+    this.H = H2 | 0;
   }
   process(view, offset) {
     for (let i = 0; i < 16; i++, offset += 4)
@@ -855,16 +855,16 @@ class SHA256 extends HashMD {
       const s1 = rotr(W2, 17) ^ rotr(W2, 19) ^ W2 >>> 10;
       SHA256_W[i] = s1 + SHA256_W[i - 7] + s0 + SHA256_W[i - 16] | 0;
     }
-    let { A, B, C, D, E, F, G, H } = this;
+    let { A, B, C, D, E: E2, F, G, H: H2 } = this;
     for (let i = 0; i < 64; i++) {
-      const sigma1 = rotr(E, 6) ^ rotr(E, 11) ^ rotr(E, 25);
-      const T1 = H + sigma1 + Chi(E, F, G) + SHA256_K[i] + SHA256_W[i] | 0;
+      const sigma1 = rotr(E2, 6) ^ rotr(E2, 11) ^ rotr(E2, 25);
+      const T1 = H2 + sigma1 + Chi(E2, F, G) + SHA256_K[i] + SHA256_W[i] | 0;
       const sigma0 = rotr(A, 2) ^ rotr(A, 13) ^ rotr(A, 22);
       const T2 = sigma0 + Maj(A, B, C) | 0;
-      H = G;
+      H2 = G;
       G = F;
-      F = E;
-      E = D + T1 | 0;
+      F = E2;
+      E2 = D + T1 | 0;
       D = C;
       C = B;
       B = A;
@@ -874,11 +874,11 @@ class SHA256 extends HashMD {
     B = B + this.B | 0;
     C = C + this.C | 0;
     D = D + this.D | 0;
-    E = E + this.E | 0;
+    E2 = E2 + this.E | 0;
     F = F + this.F | 0;
     G = G + this.G | 0;
-    H = H + this.H | 0;
-    this.set(A, B, C, D, E, F, G, H);
+    H2 = H2 + this.H | 0;
+    this.set(A, B, C, D, E2, F, G, H2);
   }
   roundClean() {
     clean(SHA256_W);
@@ -1446,10 +1446,10 @@ class PipeArrayBuffer {
     if (amount <= 0 || !Number.isInteger(amount)) {
       throw new Error("Amount must be a positive integer");
     }
-    const b = new Uint8Array((this._buffer.byteLength + amount) * 1.2 | 0);
-    const v = new Uint8Array(b.buffer, 0, this._view.byteLength + amount);
+    const b2 = new Uint8Array((this._buffer.byteLength + amount) * 1.2 | 0);
+    const v = new Uint8Array(b2.buffer, 0, this._view.byteLength + amount);
     v.set(this._view);
-    this._buffer = b;
+    this._buffer = b2;
     this._view = v;
   }
 }
@@ -1531,11 +1531,11 @@ function uint8FromBufLike(bufLike) {
   }
   return new Uint8Array(bufLike);
 }
-function uint8Equals(a, b) {
-  if (a.length !== b.length)
+function uint8Equals(a, b2) {
+  if (a.length !== b2.length)
     return false;
   for (let i = 0; i < a.length; i++) {
-    if (a[i] !== b[i])
+    if (a[i] !== b2[i])
       return false;
   }
   return true;
@@ -1578,7 +1578,7 @@ function hashOfMap(map) {
   const sorted = traversed.sort(([k1], [k2]) => {
     return compare(k1, k2);
   });
-  const concatenated = concatBytes(...sorted.map((x) => concatBytes(...x)));
+  const concatenated = concatBytes(...sorted.map((x2) => concatBytes(...x2)));
   const result = sha256(concatenated);
   return result;
 }
@@ -1731,12 +1731,12 @@ function memoized(fn) {
 const _0n$2 = BigInt(0), _1n$3 = BigInt(1), _2n$2 = /* @__PURE__ */ BigInt(2), _3n = /* @__PURE__ */ BigInt(3);
 const _4n = /* @__PURE__ */ BigInt(4), _5n$1 = /* @__PURE__ */ BigInt(5), _7n = /* @__PURE__ */ BigInt(7);
 const _8n$2 = /* @__PURE__ */ BigInt(8), _9n = /* @__PURE__ */ BigInt(9), _16n = /* @__PURE__ */ BigInt(16);
-function mod(a, b) {
-  const result = a % b;
-  return result >= _0n$2 ? result : b + result;
+function mod(a, b2) {
+  const result = a % b2;
+  return result >= _0n$2 ? result : b2 + result;
 }
-function pow2(x, power, modulo) {
-  let res = x;
+function pow2(x2, power, modulo) {
+  let res = x2;
   while (power-- > _0n$2) {
     res *= res;
     res %= modulo;
@@ -1749,18 +1749,18 @@ function invert(number, modulo) {
   if (modulo <= _0n$2)
     throw new Error("invert: expected positive modulus, got " + modulo);
   let a = mod(number, modulo);
-  let b = modulo;
-  let x = _0n$2, u = _1n$3;
+  let b2 = modulo;
+  let x2 = _0n$2, u = _1n$3;
   while (a !== _0n$2) {
-    const q = b / a;
-    const r2 = b % a;
-    const m = x - u * q;
-    b = a, a = r2, x = u, u = m;
+    const q = b2 / a;
+    const r2 = b2 % a;
+    const m = x2 - u * q;
+    b2 = a, a = r2, x2 = u, u = m;
   }
-  const gcd = b;
+  const gcd = b2;
   if (gcd !== _1n$3)
     throw new Error("invert: does not exist");
-  return mod(x, modulo);
+  return mod(x2, modulo);
 }
 function assertIsSquare(Fp2, root2, n) {
   if (!Fp2.eql(Fp2.sqr(root2), n))
@@ -1828,7 +1828,7 @@ function tonelliShanks(P) {
       return n;
     if (FpLegendre(Fp2, n) !== 1)
       throw new Error("Cannot find square root");
-    let M = S;
+    let M2 = S;
     let c = Fp2.mul(Fp2.ONE, cc);
     let t = Fp2.pow(n, Q);
     let R = Fp2.pow(n, Q1div2);
@@ -1840,15 +1840,15 @@ function tonelliShanks(P) {
       while (!Fp2.eql(t_tmp, Fp2.ONE)) {
         i++;
         t_tmp = Fp2.sqr(t_tmp);
-        if (i === M)
+        if (i === M2)
           throw new Error("Cannot find square root");
       }
-      const exponent = _1n$3 << BigInt(M - i - 1);
-      const b = Fp2.pow(c, exponent);
-      M = i;
-      c = Fp2.sqr(b);
+      const exponent = _1n$3 << BigInt(M2 - i - 1);
+      const b2 = Fp2.pow(c, exponent);
+      M2 = i;
+      c = Fp2.sqr(b2);
       t = Fp2.mul(t, c);
-      R = Fp2.mul(R, b);
+      R = Fp2.mul(R, b2);
     }
     return R;
   };
@@ -2040,7 +2040,7 @@ function Field(ORDER, bitLenOrOpts, isLE = false, opts = {}) {
     invertBatch: (lst) => FpInvertBatch(f, lst),
     // We can't move this out because Fp6, Fp12 implement it
     // and it's unclear what to return in there.
-    cmov: (a, b, c) => c ? b : a
+    cmov: (a, b2, c) => c ? b2 : a
   });
   return Object.freeze(f);
 }
@@ -2055,17 +2055,17 @@ function normalizeZ(c, points) {
   const invertedZs = FpInvertBatch(c.Fp, points.map((p) => p.Z));
   return points.map((p, i) => c.fromAffine(p.toAffine(invertedZs[i])));
 }
-function validateW(W, bits) {
-  if (!Number.isSafeInteger(W) || W <= 0 || W > bits)
-    throw new Error("invalid window size, expected [1.." + bits + "], got W=" + W);
+function validateW(W2, bits) {
+  if (!Number.isSafeInteger(W2) || W2 <= 0 || W2 > bits)
+    throw new Error("invalid window size, expected [1.." + bits + "], got W=" + W2);
 }
-function calcWOpts(W, scalarBits) {
-  validateW(W, scalarBits);
-  const windows = Math.ceil(scalarBits / W) + 1;
-  const windowSize = 2 ** (W - 1);
-  const maxNumber = 2 ** W;
-  const mask = bitMask(W);
-  const shiftBy = BigInt(W);
+function calcWOpts(W2, scalarBits) {
+  validateW(W2, scalarBits);
+  const windows = Math.ceil(scalarBits / W2) + 1;
+  const windowSize = 2 ** (W2 - 1);
+  const maxNumber = 2 ** W2;
+  const mask = bitMask(W2);
+  const shiftBy = BigInt(W2);
   return { windows, windowSize, mask, maxNumber, shiftBy };
 }
 function calcOffsets(n, window2, wOpts) {
@@ -2140,8 +2140,8 @@ class wNAF {
    * @param W window size
    * @returns precomputed point tables flattened to a single array
    */
-  precomputeWindow(point, W) {
-    const { windows, windowSize } = calcWOpts(W, this.bits);
+  precomputeWindow(point, W2) {
+    const { windows, windowSize } = calcWOpts(W2, this.bits);
     const points = [];
     let p = point;
     let base = p;
@@ -2162,12 +2162,12 @@ class wNAF {
    * https://github.com/paulmillr/noble-secp256k1/blob/47cb1669b6e506ad66b35fe7d76132ae97465da2/index.ts#L502-L541
    * @returns real and fake (for const-time) points
    */
-  wNAF(W, precomputes, n) {
+  wNAF(W2, precomputes, n) {
     if (!this.Fn.isValid(n))
       throw new Error("invalid scalar");
     let p = this.ZERO;
     let f = this.BASE;
-    const wo = calcWOpts(W, this.bits);
+    const wo = calcWOpts(W2, this.bits);
     for (let window2 = 0; window2 < wo.windows; window2++) {
       const { nextN, offset, isZero, isNeg, isNegF, offsetF } = calcOffsets(n, window2, wo);
       n = nextN;
@@ -2185,8 +2185,8 @@ class wNAF {
    * @param acc accumulator point to add result of multiplication
    * @returns point
    */
-  wNAFUnsafe(W, precomputes, n, acc = this.ZERO) {
-    const wo = calcWOpts(W, this.bits);
+  wNAFUnsafe(W2, precomputes, n, acc = this.ZERO) {
+    const wo = calcWOpts(W2, this.bits);
     for (let window2 = 0; window2 < wo.windows; window2++) {
       if (n === _0n$1)
         break;
@@ -2202,11 +2202,11 @@ class wNAF {
     assert0(n);
     return acc;
   }
-  getPrecomputes(W, point, transform) {
+  getPrecomputes(W2, point, transform) {
     let comp = pointPrecomputes.get(point);
     if (!comp) {
-      comp = this.precomputeWindow(point, W);
-      if (W !== 1) {
+      comp = this.precomputeWindow(point, W2);
+      if (W2 !== 1) {
         if (typeof transform === "function")
           comp = transform(comp);
         pointPrecomputes.set(point, comp);
@@ -2215,21 +2215,21 @@ class wNAF {
     return comp;
   }
   cached(point, scalar, transform) {
-    const W = getW(point);
-    return this.wNAF(W, this.getPrecomputes(W, point, transform), scalar);
+    const W2 = getW(point);
+    return this.wNAF(W2, this.getPrecomputes(W2, point, transform), scalar);
   }
   unsafe(point, scalar, transform, prev) {
-    const W = getW(point);
-    if (W === 1)
+    const W2 = getW(point);
+    if (W2 === 1)
       return this._unsafeLadder(point, scalar, prev);
-    return this.wNAFUnsafe(W, this.getPrecomputes(W, point, transform), scalar, prev);
+    return this.wNAFUnsafe(W2, this.getPrecomputes(W2, point, transform), scalar, prev);
   }
   // We calculate precomputes for elliptic curve point multiplication
   // using windowed method. This specifies window size and
   // stores precomputed values. Usually only base point would be precomputed.
-  createCache(P, W) {
-    validateW(W, this.bits);
-    pointWindowSizes.set(P, W);
+  createCache(P, W2) {
+    validateW(W2, this.bits);
+    pointWindowSizes.set(P, W2);
     pointPrecomputes.delete(P);
   }
   hasCache(elm) {
@@ -2308,11 +2308,11 @@ function _createCurveFields(type, CURVE, curveOpts = {}, FpFnLE) {
 }
 /*! noble-curves - MIT License (c) 2022 Paul Miller (paulmillr.com) */
 const _0n = BigInt(0), _1n$1 = BigInt(1), _2n$1 = BigInt(2), _8n$1 = BigInt(8);
-function isEdValidXY(Fp2, CURVE, x, y) {
-  const x2 = Fp2.sqr(x);
+function isEdValidXY(Fp2, CURVE, x2, y) {
+  const x22 = Fp2.sqr(x2);
   const y2 = Fp2.sqr(y);
-  const left = Fp2.add(Fp2.mul(CURVE.a, x2), y2);
-  const right = Fp2.add(Fp2.ONE, Fp2.mul(CURVE.d, Fp2.mul(x2, y2)));
+  const left = Fp2.add(Fp2.mul(CURVE.a, x22), y2);
+  const right = Fp2.add(Fp2.ONE, Fp2.mul(CURVE.d, Fp2.mul(x22, y2)));
   return Fp2.eql(left, right);
 }
 function edwards(params, extraOpts = {}) {
@@ -2346,14 +2346,14 @@ function edwards(params, extraOpts = {}) {
     const is0 = p.is0();
     if (iz == null)
       iz = is0 ? _8n$1 : Fp2.inv(Z);
-    const x = modP(X2 * iz);
+    const x2 = modP(X2 * iz);
     const y = modP(Y * iz);
     const zz = Fp2.mul(Z, iz);
     if (is0)
       return { x: _0n, y: _1n$1 };
     if (zz !== _1n$1)
       throw new Error("invZ was invalid");
-    return { x, y };
+    return { x: x2, y };
   });
   const assertValidMemo = memoized((p) => {
     const { a, d } = CURVE;
@@ -2389,10 +2389,10 @@ function edwards(params, extraOpts = {}) {
     static fromAffine(p) {
       if (p instanceof Point)
         throw new Error("extended point not allowed");
-      const { x, y } = p || {};
-      acoord("x", x);
+      const { x: x2, y } = p || {};
+      acoord("x", x2);
       acoord("y", y);
-      return new Point(x, y, _1n$1, modP(x * y));
+      return new Point(x2, y, _1n$1, modP(x2 * y));
     }
     // Uses algo from RFC8032 5.1.3.
     static fromBytes(bytes, zip215 = false) {
@@ -2409,16 +2409,16 @@ function edwards(params, extraOpts = {}) {
       const y2 = modP(y * y);
       const u = modP(y2 - _1n$1);
       const v = modP(d * y2 - a);
-      let { isValid, value: x } = uvRatio2(u, v);
+      let { isValid, value: x2 } = uvRatio2(u, v);
       if (!isValid)
         throw new Error("bad point: invalid y coordinate");
-      const isXOdd = (x & _1n$1) === _1n$1;
+      const isXOdd = (x2 & _1n$1) === _1n$1;
       const isLastByteOdd = (lastByte & 128) !== 0;
-      if (!zip215 && x === _0n && isLastByteOdd)
+      if (!zip215 && x2 === _0n && isLastByteOdd)
         throw new Error("bad point: x=0 and x_0=1");
       if (isLastByteOdd !== isXOdd)
-        x = modP(-x);
-      return Point.fromAffine({ x, y });
+        x2 = modP(-x2);
+      return Point.fromAffine({ x: x2, y });
     }
     static fromHex(bytes, zip215 = false) {
       return Point.fromBytes(ensureBytes("point", bytes), zip215);
@@ -2467,13 +2467,13 @@ function edwards(params, extraOpts = {}) {
       const C = modP(_2n$1 * modP(Z1 * Z1));
       const D = modP(a * A);
       const x1y1 = X1 + Y1;
-      const E = modP(modP(x1y1 * x1y1) - A - B);
+      const E2 = modP(modP(x1y1 * x1y1) - A - B);
       const G = D + B;
       const F = G - C;
-      const H = D - B;
-      const X3 = modP(E * F);
-      const Y3 = modP(G * H);
-      const T3 = modP(E * H);
+      const H2 = D - B;
+      const X3 = modP(E2 * F);
+      const Y3 = modP(G * H2);
+      const T3 = modP(E2 * H2);
       const Z3 = modP(F * G);
       return new Point(X3, Y3, Z3, T3);
     }
@@ -2489,13 +2489,13 @@ function edwards(params, extraOpts = {}) {
       const B = modP(Y1 * Y2);
       const C = modP(T1 * d * T2);
       const D = modP(Z1 * Z2);
-      const E = modP((X1 + Y1) * (X2 + Y2) - A - B);
+      const E2 = modP((X1 + Y1) * (X2 + Y2) - A - B);
       const F = D - C;
       const G = D + C;
-      const H = modP(B - a * A);
-      const X3 = modP(E * F);
-      const Y3 = modP(G * H);
-      const T3 = modP(E * H);
+      const H2 = modP(B - a * A);
+      const X3 = modP(E2 * F);
+      const Y3 = modP(G * H2);
+      const T3 = modP(E2 * H2);
       const Z3 = modP(F * G);
       return new Point(X3, Y3, Z3, T3);
     }
@@ -2546,9 +2546,9 @@ function edwards(params, extraOpts = {}) {
       return this.multiplyUnsafe(cofactor);
     }
     toBytes() {
-      const { x, y } = this.toAffine();
+      const { x: x2, y } = this.toAffine();
       const bytes = Fp2.toBytes(y);
-      bytes[bytes.length - 1] |= x & _1n$1 ? 128 : 0;
+      bytes[bytes.length - 1] |= x2 & _1n$1 ? 128 : 0;
       return bytes;
     }
     toHex() {
@@ -2800,13 +2800,13 @@ const ed25519_CURVE = /* @__PURE__ */ (() => ({
   Gx: BigInt("0x216936d3cd6e53fec0a4e231fdd6dc5c692cc7609525a7b2c9562d608f25d51a"),
   Gy: BigInt("0x6666666666666666666666666666666666666666666666666666666666666658")
 }))();
-function ed25519_pow_2_252_3(x) {
+function ed25519_pow_2_252_3(x2) {
   const _10n = BigInt(10), _20n = BigInt(20), _40n = BigInt(40), _80n = BigInt(80);
   const P = ed25519_CURVE_p;
-  const x2 = x * x % P;
-  const b2 = x2 * x % P;
+  const x22 = x2 * x2 % P;
+  const b2 = x22 * x2 % P;
   const b4 = pow2(b2, _2n, P) * b2 % P;
-  const b5 = pow2(b4, _1n, P) * x % P;
+  const b5 = pow2(b4, _1n, P) * x2 % P;
   const b10 = pow2(b5, _5n, P) * b5 % P;
   const b20 = pow2(b10, _10n, P) * b10 % P;
   const b40 = pow2(b20, _20n, P) * b20 % P;
@@ -2814,7 +2814,7 @@ function ed25519_pow_2_252_3(x) {
   const b160 = pow2(b80, _80n, P) * b80 % P;
   const b240 = pow2(b160, _80n, P) * b80 % P;
   const b250 = pow2(b240, _10n, P) * b10 % P;
-  const pow_p_5_8 = pow2(b250, _2n, P) * x % P;
+  const pow_p_5_8 = pow2(b250, _2n, P) * x2 % P;
   return { pow_p_5_8, b2 };
 }
 function adjustScalarBytes(bytes) {
@@ -2829,20 +2829,20 @@ function uvRatio(u, v) {
   const v3 = mod(v * v * v, P);
   const v7 = mod(v3 * v3 * v, P);
   const pow = ed25519_pow_2_252_3(u * v7).pow_p_5_8;
-  let x = mod(u * v3 * pow, P);
-  const vx2 = mod(v * x * x, P);
-  const root1 = x;
-  const root2 = mod(x * ED25519_SQRT_M1, P);
+  let x2 = mod(u * v3 * pow, P);
+  const vx2 = mod(v * x2 * x2, P);
+  const root1 = x2;
+  const root2 = mod(x2 * ED25519_SQRT_M1, P);
   const useRoot1 = vx2 === u;
   const useRoot2 = vx2 === mod(-u, P);
   const noRoot = vx2 === mod(-u * ED25519_SQRT_M1, P);
   if (useRoot1)
-    x = root1;
+    x2 = root1;
   if (useRoot2 || noRoot)
-    x = root2;
-  if (isNegativeLE(x, P))
-    x = mod(-x, P);
-  return { isValid: useRoot1 || useRoot2, value: x };
+    x2 = root2;
+  if (isNegativeLE(x2, P))
+    x2 = mod(-x2, P);
+  return { isValid: useRoot1 || useRoot2, value: x2 };
 }
 const Fp = /* @__PURE__ */ (() => Field(ed25519_CURVE.p, { isLE: true }))();
 const ed25519Defaults = /* @__PURE__ */ (() => ({
@@ -3259,42 +3259,42 @@ function hashQueryKeyByOptions(queryKey, options) {
 function hashKey(queryKey) {
   return JSON.stringify(
     queryKey,
-    (_, val) => isPlainObject$1(val) ? Object.keys(val).sort().reduce((result, key) => {
+    (_2, val) => isPlainObject$1(val) ? Object.keys(val).sort().reduce((result, key) => {
       result[key] = val[key];
       return result;
     }, {}) : val
   );
 }
-function partialMatchKey(a, b) {
-  if (a === b) {
+function partialMatchKey(a, b2) {
+  if (a === b2) {
     return true;
   }
-  if (typeof a !== typeof b) {
+  if (typeof a !== typeof b2) {
     return false;
   }
-  if (a && b && typeof a === "object" && typeof b === "object") {
-    return Object.keys(b).every((key) => partialMatchKey(a[key], b[key]));
+  if (a && b2 && typeof a === "object" && typeof b2 === "object") {
+    return Object.keys(b2).every((key) => partialMatchKey(a[key], b2[key]));
   }
   return false;
 }
 var hasOwn$1 = Object.prototype.hasOwnProperty;
-function replaceEqualDeep$1(a, b, depth = 0) {
-  if (a === b) {
+function replaceEqualDeep$1(a, b2, depth = 0) {
+  if (a === b2) {
     return a;
   }
-  if (depth > 500) return b;
-  const array = isPlainArray$1(a) && isPlainArray$1(b);
-  if (!array && !(isPlainObject$1(a) && isPlainObject$1(b))) return b;
+  if (depth > 500) return b2;
+  const array = isPlainArray$1(a) && isPlainArray$1(b2);
+  if (!array && !(isPlainObject$1(a) && isPlainObject$1(b2))) return b2;
   const aItems = array ? a : Object.keys(a);
   const aSize = aItems.length;
-  const bItems = array ? b : Object.keys(b);
+  const bItems = array ? b2 : Object.keys(b2);
   const bSize = bItems.length;
   const copy = array ? new Array(bSize) : {};
   let equalItems = 0;
   for (let i = 0; i < bSize; i++) {
     const key = array ? i : bItems[i];
     const aItem = a[key];
-    const bItem = b[key];
+    const bItem = b2[key];
     if (aItem === bItem) {
       copy[key] = aItem;
       if (array ? i < aSize : hasOwn$1.call(a, key)) equalItems++;
@@ -3838,13 +3838,13 @@ var Query = (_e = class extends Removable {
   }
   onFocus() {
     var _a2;
-    const observer = this.observers.find((x) => x.shouldFetchOnWindowFocus());
+    const observer = this.observers.find((x2) => x2.shouldFetchOnWindowFocus());
     observer == null ? void 0 : observer.refetch({ cancelRefetch: false });
     (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.continue();
   }
   onOnline() {
     var _a2;
-    const observer = this.observers.find((x) => x.shouldFetchOnReconnect());
+    const observer = this.observers.find((x2) => x2.shouldFetchOnReconnect());
     observer == null ? void 0 : observer.refetch({ cancelRefetch: false });
     (_a2 = __privateGet(this, _retryer)) == null ? void 0 : _a2.continue();
   }
@@ -3857,7 +3857,7 @@ var Query = (_e = class extends Removable {
   }
   removeObserver(observer) {
     if (this.observers.includes(observer)) {
-      this.observers = this.observers.filter((x) => x !== observer);
+      this.observers = this.observers.filter((x2) => x2 !== observer);
       if (!this.observers.length) {
         if (__privateGet(this, _retryer)) {
           if (__privateGet(this, _abortSignalConsumed) || __privateMethod(this, _Query_instances, isInitialPausedFetch_fn).call(this)) {
@@ -3896,7 +3896,7 @@ var Query = (_e = class extends Removable {
       this.setOptions(options);
     }
     if (!this.options.queryFn) {
-      const observer = this.observers.find((x) => x.options.queryFn);
+      const observer = this.observers.find((x2) => x2.options.queryFn);
       if (observer) {
         this.setOptions(observer.options);
       }
@@ -4275,7 +4275,7 @@ var Mutation = (_f = class extends Removable {
     }
   }
   removeObserver(observer) {
-    __privateSet(this, _observers, __privateGet(this, _observers).filter((x) => x !== observer));
+    __privateSet(this, _observers, __privateGet(this, _observers).filter((x2) => x2 !== observer));
     this.scheduleGc();
     __privateGet(this, _mutationCache).notify({
       type: "observerRemoved",
@@ -4628,7 +4628,7 @@ var MutationCache = (_g = class extends Subscribable {
     });
   }
   resumePausedMutations() {
-    const pausedMutations = this.getAll().filter((x) => x.state.isPaused);
+    const pausedMutations = this.getAll().filter((x2) => x2.state.isPaused);
     return notifyManager.batch(
       () => Promise.all(
         pausedMutations.map((mutation) => mutation.continue().catch(noop$6))
@@ -5645,11 +5645,11 @@ const _Ed25519KeyIdentity = class _Ed25519KeyIdentity extends SignIdentity {
    * @returns - true if the signature is valid, false otherwise
    */
   static verify(sig, msg, pk) {
-    const [signature, message, publicKey] = [sig, msg, pk].map((x) => {
-      if (typeof x === "string") {
-        x = hexToBytes(x);
+    const [signature, message, publicKey] = [sig, msg, pk].map((x2) => {
+      if (typeof x2 === "string") {
+        x2 = hexToBytes(x2);
       }
-      return uint8FromBufLike$1(x);
+      return uint8FromBufLike$1(x2);
     });
     return ed25519.verify(signature, message, publicKey);
   }
@@ -6917,6 +6917,87 @@ function InternetIdentityProvider({ children, createOptions }) {
     children
   });
 }
+var M = (e, i, s, u, m, a, l, h) => {
+  let d = document.documentElement, w = ["light", "dark"];
+  function p(n) {
+    (Array.isArray(e) ? e : [e]).forEach((y) => {
+      let k = y === "class", S = k && a ? m.map((f) => a[f] || f) : m;
+      k ? (d.classList.remove(...S), d.classList.add(a && a[n] ? a[n] : n)) : d.setAttribute(y, n);
+    }), R(n);
+  }
+  function R(n) {
+    h && w.includes(n) && (d.style.colorScheme = n);
+  }
+  function c() {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+  if (u) p(u);
+  else try {
+    let n = localStorage.getItem(i) || s, y = l && n === "system" ? c() : n;
+    p(y);
+  } catch (n) {
+  }
+};
+var b = ["light", "dark"], I = "(prefers-color-scheme: dark)", O = typeof window == "undefined", x = reactExports.createContext(void 0), U = { setTheme: (e) => {
+}, themes: [] }, z = () => {
+  var e;
+  return (e = reactExports.useContext(x)) != null ? e : U;
+}, J = (e) => reactExports.useContext(x) ? reactExports.createElement(reactExports.Fragment, null, e.children) : reactExports.createElement(V, { ...e }), N = ["light", "dark"], V = ({ forcedTheme: e, disableTransitionOnChange: i = false, enableSystem: s = true, enableColorScheme: u = true, storageKey: m = "theme", themes: a = N, defaultTheme: l = s ? "system" : "light", attribute: h = "data-theme", value: d, children: w, nonce: p, scriptProps: R }) => {
+  let [c, n] = reactExports.useState(() => H(m, l)), [T, y] = reactExports.useState(() => c === "system" ? E() : c), k = d ? Object.values(d) : a, S = reactExports.useCallback((o) => {
+    let r2 = o;
+    if (!r2) return;
+    o === "system" && s && (r2 = E());
+    let v = d ? d[r2] : r2, C = i ? W(p) : null, P = document.documentElement, L = (g) => {
+      g === "class" ? (P.classList.remove(...k), v && P.classList.add(v)) : g.startsWith("data-") && (v ? P.setAttribute(g, v) : P.removeAttribute(g));
+    };
+    if (Array.isArray(h) ? h.forEach(L) : L(h), u) {
+      let g = b.includes(l) ? l : null, D = b.includes(r2) ? r2 : g;
+      P.style.colorScheme = D;
+    }
+    C == null || C();
+  }, [p]), f = reactExports.useCallback((o) => {
+    let r2 = typeof o == "function" ? o(c) : o;
+    n(r2);
+    try {
+      localStorage.setItem(m, r2);
+    } catch (v) {
+    }
+  }, [c]), A = reactExports.useCallback((o) => {
+    let r2 = E(o);
+    y(r2), c === "system" && s && !e && S("system");
+  }, [c, e]);
+  reactExports.useEffect(() => {
+    let o = window.matchMedia(I);
+    return o.addListener(A), A(o), () => o.removeListener(A);
+  }, [A]), reactExports.useEffect(() => {
+    let o = (r2) => {
+      r2.key === m && (r2.newValue ? n(r2.newValue) : f(l));
+    };
+    return window.addEventListener("storage", o), () => window.removeEventListener("storage", o);
+  }, [f]), reactExports.useEffect(() => {
+    S(e != null ? e : c);
+  }, [e, c]);
+  let Q = reactExports.useMemo(() => ({ theme: c, setTheme: f, forcedTheme: e, resolvedTheme: c === "system" ? T : c, themes: s ? [...a, "system"] : a, systemTheme: s ? T : void 0 }), [c, f, e, T, s, a]);
+  return reactExports.createElement(x.Provider, { value: Q }, reactExports.createElement(_, { forcedTheme: e, storageKey: m, attribute: h, enableSystem: s, enableColorScheme: u, defaultTheme: l, value: d, themes: a, nonce: p, scriptProps: R }), w);
+}, _ = reactExports.memo(({ forcedTheme: e, storageKey: i, attribute: s, enableSystem: u, enableColorScheme: m, defaultTheme: a, value: l, themes: h, nonce: d, scriptProps: w }) => {
+  let p = JSON.stringify([s, i, a, e, h, l, u, m]).slice(1, -1);
+  return reactExports.createElement("script", { ...w, suppressHydrationWarning: true, nonce: typeof window == "undefined" ? d : "", dangerouslySetInnerHTML: { __html: `(${M.toString()})(${p})` } });
+}), H = (e, i) => {
+  if (O) return;
+  let s;
+  try {
+    s = localStorage.getItem(e) || void 0;
+  } catch (u) {
+  }
+  return s || i;
+}, W = (e) => {
+  let i = document.createElement("style");
+  return e && i.setAttribute("nonce", e), i.appendChild(document.createTextNode("*,*::before,*::after{-webkit-transition:none!important;-moz-transition:none!important;-o-transition:none!important;-ms-transition:none!important;transition:none!important}")), document.head.appendChild(i), () => {
+    window.getComputedStyle(document.body), setTimeout(() => {
+      document.head.removeChild(i);
+    }, 1);
+  };
+}, E = (e) => (e || (e = window.matchMedia(I)), e.matches ? "dark" : "light");
 var client = { exports: {} };
 var reactDomClient_production = {};
 var scheduler = { exports: {} };
@@ -6960,9 +7041,9 @@ var scheduler_production = {};
     }
     return first;
   }
-  function compare2(a, b) {
-    var diff = a.sortIndex - b.sortIndex;
-    return 0 !== diff ? diff : a.id - b.id;
+  function compare2(a, b2) {
+    var diff = a.sortIndex - b2.sortIndex;
+    return 0 !== diff ? diff : a.id - b2.id;
   }
   exports$1.unstable_now = void 0;
   if ("object" === typeof performance && "function" === typeof performance.now) {
@@ -7402,14 +7483,14 @@ function findCurrentFiberUsingSlowPath(fiber) {
     if (null === alternate) throw Error(formatProdErrorMessage(188));
     return alternate !== fiber ? null : fiber;
   }
-  for (var a = fiber, b = alternate; ; ) {
+  for (var a = fiber, b2 = alternate; ; ) {
     var parentA = a.return;
     if (null === parentA) break;
     var parentB = parentA.alternate;
     if (null === parentB) {
-      b = parentA.return;
-      if (null !== b) {
-        a = b;
+      b2 = parentA.return;
+      if (null !== b2) {
+        a = b2;
         continue;
       }
       break;
@@ -7417,23 +7498,23 @@ function findCurrentFiberUsingSlowPath(fiber) {
     if (parentA.child === parentB.child) {
       for (parentB = parentA.child; parentB; ) {
         if (parentB === a) return assertIsMounted(parentA), fiber;
-        if (parentB === b) return assertIsMounted(parentA), alternate;
+        if (parentB === b2) return assertIsMounted(parentA), alternate;
         parentB = parentB.sibling;
       }
       throw Error(formatProdErrorMessage(188));
     }
-    if (a.return !== b.return) a = parentA, b = parentB;
+    if (a.return !== b2.return) a = parentA, b2 = parentB;
     else {
       for (var didFindChild = false, child$0 = parentA.child; child$0; ) {
         if (child$0 === a) {
           didFindChild = true;
           a = parentA;
-          b = parentB;
+          b2 = parentB;
           break;
         }
-        if (child$0 === b) {
+        if (child$0 === b2) {
           didFindChild = true;
-          b = parentA;
+          b2 = parentA;
           a = parentB;
           break;
         }
@@ -7444,12 +7525,12 @@ function findCurrentFiberUsingSlowPath(fiber) {
           if (child$0 === a) {
             didFindChild = true;
             a = parentB;
-            b = parentA;
+            b2 = parentA;
             break;
           }
-          if (child$0 === b) {
+          if (child$0 === b2) {
             didFindChild = true;
-            b = parentB;
+            b2 = parentB;
             a = parentA;
             break;
           }
@@ -7458,7 +7539,7 @@ function findCurrentFiberUsingSlowPath(fiber) {
         if (!didFindChild) throw Error(formatProdErrorMessage(189));
       }
     }
-    if (a.alternate !== b) throw Error(formatProdErrorMessage(190));
+    if (a.alternate !== b2) throw Error(formatProdErrorMessage(190));
   }
   if (3 !== a.tag) throw Error(formatProdErrorMessage(188));
   return a.stateNode.current === a ? fiber : alternate;
@@ -7522,7 +7603,7 @@ function getComponentNameFromType(type) {
         type = type._init;
         try {
           return getComponentNameFromType(type(innerType));
-        } catch (x) {
+        } catch (x2) {
         }
     }
   return null;
@@ -7597,9 +7678,9 @@ function setIsStrictModeForDevtools(newIsStrictMode) {
     }
 }
 var clz32 = Math.clz32 ? Math.clz32 : clz32Fallback, log = Math.log, LN2 = Math.LN2;
-function clz32Fallback(x) {
-  x >>>= 0;
-  return 0 === x ? 32 : 31 - (log(x) / LN2 | 0) | 0;
+function clz32Fallback(x2) {
+  x2 >>>= 0;
+  return 0 === x2 ? 32 : 31 - (log(x2) / LN2 | 0) | 0;
 }
 var nextTransitionLane = 256, nextRetryLane = 4194304;
 function getHighestPriorityLanes(lanes) {
@@ -7949,10 +8030,10 @@ function describeBuiltInComponentFrame(name) {
   if (void 0 === prefix$1)
     try {
       throw Error();
-    } catch (x) {
-      var match = x.stack.trim().match(/\n( *(at )?)/);
+    } catch (x2) {
+      var match = x2.stack.trim().match(/\n( *(at )?)/);
       prefix$1 = match && match[1] || "";
-      suffix = -1 < x.stack.indexOf("\n    at") ? " (<anonymous>)" : -1 < x.stack.indexOf("@") ? "@unknown:0:0" : "";
+      suffix = -1 < x2.stack.indexOf("\n    at") ? " (<anonymous>)" : -1 < x2.stack.indexOf("@") ? "@unknown:0:0" : "";
     }
   return "\n" + prefix$1 + name + suffix;
 }
@@ -7978,8 +8059,8 @@ function describeNativeComponentFrame(fn, construct) {
             if ("object" === typeof Reflect && Reflect.construct) {
               try {
                 Reflect.construct(Fake, []);
-              } catch (x) {
-                var control = x;
+              } catch (x2) {
+                var control = x2;
               }
               Reflect.construct(fn, [], Fake);
             } else {
@@ -8079,8 +8160,8 @@ function getStackByFiberInDevAndProd(workInProgress2) {
       info += describeFiber(workInProgress2), workInProgress2 = workInProgress2.return;
     while (workInProgress2);
     return info;
-  } catch (x) {
-    return "\nError generating stack: " + x.message + "\n" + x.stack;
+  } catch (x2) {
+    return "\nError generating stack: " + x2.message + "\n" + x2.stack;
   }
 }
 function getToStringValue(value) {
@@ -8440,8 +8521,8 @@ function restoreStateOfTarget(target) {
   }
 }
 var isInsideEventHandler = false;
-function batchedUpdates$1(fn, a, b) {
-  if (isInsideEventHandler) return fn(a, b);
+function batchedUpdates$1(fn, a, b2) {
+  if (isInsideEventHandler) return fn(a, b2);
   isInsideEventHandler = true;
   try {
     var JSCompiler_inline_result = fn(a);
@@ -8857,8 +8938,8 @@ function getTargetInstForInputOrChangeEvent(domEventName, targetInst) {
   if ("input" === domEventName || "change" === domEventName)
     return getInstIfValueChanged(targetInst);
 }
-function is$2(x, y) {
-  return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+function is$2(x2, y) {
+  return x2 === y && (0 !== x2 || 1 / x2 === 1 / y) || x2 !== x2 && y !== y;
 }
 var objectIs$2 = "function" === typeof Object.is ? Object.is : is$2;
 function shallowEqual(objA, objB) {
@@ -10380,9 +10461,9 @@ function updateActionStateImpl(stateHook, currentStateHook, action) {
   if ("object" === typeof currentStateHook && null !== currentStateHook && "function" === typeof currentStateHook.then)
     try {
       var state = useThenable(currentStateHook);
-    } catch (x) {
-      if (x === SuspenseException) throw SuspenseActionException;
-      throw x;
+    } catch (x2) {
+      if (x2 === SuspenseException) throw SuspenseActionException;
+      throw x2;
     }
   else state = currentStateHook;
   currentStateHook = updateWorkInProgressHook();
@@ -11470,9 +11551,9 @@ function createChildReconciler(shouldTrackSideEffects) {
       );
       thenableState = null;
       return firstChildFiber;
-    } catch (x) {
-      if (x === SuspenseException || x === SuspenseActionException) throw x;
-      var fiber = createFiberImplClass(29, x, null, returnFiber.mode);
+    } catch (x2) {
+      if (x2 === SuspenseException || x2 === SuspenseActionException) throw x2;
+      var fiber = createFiberImplClass(29, x2, null, returnFiber.mode);
       fiber.lanes = lanes;
       fiber.return = returnFiber;
       return fiber;
@@ -20994,9 +21075,9 @@ let __batchDepth = 0;
 const __pendingUpdates = /* @__PURE__ */ new Set();
 const __initialBatchValues = /* @__PURE__ */ new Map();
 function __flush_internals(relatedVals) {
-  const sorted = Array.from(relatedVals).sort((a, b) => {
-    if (a instanceof Derived && a.options.deps.includes(b)) return 1;
-    if (b instanceof Derived && b.options.deps.includes(a)) return -1;
+  const sorted = Array.from(relatedVals).sort((a, b2) => {
+    if (a instanceof Derived && a.options.deps.includes(b2)) return 1;
+    if (b2 instanceof Derived && b2.options.deps.includes(a)) return -1;
     return 0;
   });
   for (const derived of sorted) {
@@ -21356,7 +21437,7 @@ function createHistory(opts) {
       return () => {
         var _a22, _b2;
         const blockers2 = ((_a22 = opts.getBlockers) == null ? void 0 : _a22.call(opts)) ?? [];
-        (_b2 = opts.setBlockers) == null ? void 0 : _b2.call(opts, blockers2.filter((b) => b !== blocker));
+        (_b2 = opts.setBlockers) == null ? void 0 : _b2.call(opts, blockers2.filter((b2) => b2 !== blocker));
       };
     },
     flush: () => {
@@ -21709,26 +21790,26 @@ function hasObjectPrototype(o) {
 function isPlainArray(value) {
   return Array.isArray(value) && value.length === Object.keys(value).length;
 }
-function deepEqual(a, b, opts) {
-  if (a === b) {
+function deepEqual(a, b2, opts) {
+  if (a === b2) {
     return true;
   }
-  if (typeof a !== typeof b) {
+  if (typeof a !== typeof b2) {
     return false;
   }
-  if (Array.isArray(a) && Array.isArray(b)) {
-    if (a.length !== b.length) return false;
+  if (Array.isArray(a) && Array.isArray(b2)) {
+    if (a.length !== b2.length) return false;
     for (let i = 0, l = a.length; i < l; i++) {
-      if (!deepEqual(a[i], b[i], opts)) return false;
+      if (!deepEqual(a[i], b2[i], opts)) return false;
     }
     return true;
   }
-  if (isPlainObject(a) && isPlainObject(b)) {
+  if (isPlainObject(a) && isPlainObject(b2)) {
     const ignoreUndefined = (opts == null ? void 0 : opts.ignoreUndefined) ?? true;
     if (opts == null ? void 0 : opts.partial) {
-      for (const k in b) {
-        if (!ignoreUndefined || b[k] !== void 0) {
-          if (!deepEqual(a[k], b[k], opts)) return false;
+      for (const k in b2) {
+        if (!ignoreUndefined || b2[k] !== void 0) {
+          if (!deepEqual(a[k], b2[k], opts)) return false;
         }
       }
       return true;
@@ -21742,10 +21823,10 @@ function deepEqual(a, b, opts) {
       }
     }
     let bCount = 0;
-    for (const k in b) {
-      if (!ignoreUndefined || b[k] !== void 0) {
+    for (const k in b2) {
+      if (!ignoreUndefined || b2[k] !== void 0) {
         bCount++;
-        if (bCount > aCount || !deepEqual(a[k], b[k], opts)) return false;
+        if (bCount > aCount || !deepEqual(a[k], b2[k], opts)) return false;
       }
     }
     return aCount === bCount;
@@ -22408,31 +22489,31 @@ function sortRoutes(routes) {
       hasStaticAfter
     });
   });
-  const flatRoutes = scoredRoutes.sort((a, b) => {
-    const minLength = Math.min(a.scores.length, b.scores.length);
+  const flatRoutes = scoredRoutes.sort((a, b2) => {
+    const minLength = Math.min(a.scores.length, b2.scores.length);
     for (let i = 0; i < minLength; i++) {
-      if (a.scores[i] !== b.scores[i]) {
-        return b.scores[i] - a.scores[i];
+      if (a.scores[i] !== b2.scores[i]) {
+        return b2.scores[i] - a.scores[i];
       }
     }
-    if (a.scores.length !== b.scores.length) {
-      if (a.optionalParamCount !== b.optionalParamCount) {
-        if (a.hasStaticAfter === b.hasStaticAfter) {
-          return a.optionalParamCount - b.optionalParamCount;
-        } else if (a.hasStaticAfter && !b.hasStaticAfter) {
+    if (a.scores.length !== b2.scores.length) {
+      if (a.optionalParamCount !== b2.optionalParamCount) {
+        if (a.hasStaticAfter === b2.hasStaticAfter) {
+          return a.optionalParamCount - b2.optionalParamCount;
+        } else if (a.hasStaticAfter && !b2.hasStaticAfter) {
           return -1;
-        } else if (!a.hasStaticAfter && b.hasStaticAfter) {
+        } else if (!a.hasStaticAfter && b2.hasStaticAfter) {
           return 1;
         }
       }
-      return b.scores.length - a.scores.length;
+      return b2.scores.length - a.scores.length;
     }
     for (let i = 0; i < minLength; i++) {
-      if (a.parsed[i].value !== b.parsed[i].value) {
-        return a.parsed[i].value > b.parsed[i].value ? 1 : -1;
+      if (a.parsed[i].value !== b2.parsed[i].value) {
+        return a.parsed[i].value > b2.parsed[i].value ? 1 : -1;
       }
     }
-    return a.index - b.index;
+    return a.index - b2.index;
   }).map((d, i) => {
     d.child.rank = i;
     return d.child;
@@ -24917,8 +24998,8 @@ var useSyncExternalStoreShim_production = {};
  * LICENSE file in the root directory of this source tree.
  */
 var React$1 = reactExports;
-function is$1(x, y) {
-  return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+function is$1(x2, y) {
+  return x2 === y && (0 !== x2 || 1 / x2 === 1 / y) || x2 !== x2 && y !== y;
 }
 var objectIs$1 = "function" === typeof Object.is ? Object.is : is$1, useState = React$1.useState, useEffect$1 = React$1.useEffect, useLayoutEffect$1 = React$1.useLayoutEffect, useDebugValue$1 = React$1.useDebugValue;
 function useSyncExternalStore$2(subscribe2, getSnapshot) {
@@ -24972,8 +25053,8 @@ var shimExports = shim$2.exports;
  * LICENSE file in the root directory of this source tree.
  */
 var React = reactExports, shim = shimExports;
-function is(x, y) {
-  return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+function is(x2, y) {
+  return x2 === y && (0 !== x2 || 1 / x2 === 1 / y) || x2 !== x2 && y !== y;
 }
 var objectIs = "function" === typeof Object.is ? Object.is : is, useSyncExternalStore = shim.useSyncExternalStore, useRef = React.useRef, useEffect = React.useEffect, useMemo = React.useMemo, useDebugValue = React.useDebugValue;
 withSelector_production.useSyncExternalStoreWithSelector = function(subscribe2, getSnapshot, getServerSnapshot, selector, isEqual) {
@@ -25439,7 +25520,7 @@ function useLinkProps(options, forwardedRef) {
       ...onTouchStart && { onTouchStart }
     };
   }
-  const handleFocus = (_) => {
+  const handleFocus = (_2) => {
     if (disabled) return;
     if (preload3) {
       doPreload();
@@ -26303,11 +26384,33 @@ const createLucideIcon = (iconName, iconNode) => {
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$4 = [
+const __iconNode$6 = [
   ["path", { d: "m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7", key: "132q7q" }],
   ["rect", { x: "2", y: "4", width: "20", height: "16", rx: "2", key: "izxlao" }]
 ];
-const Mail = createLucideIcon("mail", __iconNode$4);
+const Mail = createLucideIcon("mail", __iconNode$6);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$5 = [
+  ["path", { d: "M4 12h16", key: "1lakjw" }],
+  ["path", { d: "M4 18h16", key: "19g7jn" }],
+  ["path", { d: "M4 6h16", key: "1o0s65" }]
+];
+const Menu = createLucideIcon("menu", __iconNode$5);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$4 = [
+  ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
+];
+const MessageCircle = createLucideIcon("message-circle", __iconNode$4);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26315,11 +26418,9 @@ const Mail = createLucideIcon("mail", __iconNode$4);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$3 = [
-  ["path", { d: "M4 12h16", key: "1lakjw" }],
-  ["path", { d: "M4 18h16", key: "19g7jn" }],
-  ["path", { d: "M4 6h16", key: "1o0s65" }]
+  ["path", { d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z", key: "a7tn18" }]
 ];
-const Menu = createLucideIcon("menu", __iconNode$3);
+const Moon = createLucideIcon("moon", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -26327,9 +26428,17 @@ const Menu = createLucideIcon("menu", __iconNode$3);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$2 = [
-  ["path", { d: "M7.9 20A9 9 0 1 0 4 16.1L2 22Z", key: "vv11sd" }]
+  ["circle", { cx: "12", cy: "12", r: "4", key: "4exip2" }],
+  ["path", { d: "M12 2v2", key: "tus03m" }],
+  ["path", { d: "M12 20v2", key: "1lh1kg" }],
+  ["path", { d: "m4.93 4.93 1.41 1.41", key: "149t6j" }],
+  ["path", { d: "m17.66 17.66 1.41 1.41", key: "ptbguv" }],
+  ["path", { d: "M2 12h2", key: "1t8f8n" }],
+  ["path", { d: "M20 12h2", key: "1q8mjw" }],
+  ["path", { d: "m6.34 17.66-1.41 1.41", key: "1m8zz5" }],
+  ["path", { d: "m19.07 4.93-1.41 1.41", key: "1shlcs" }]
 ];
-const MessageCircle = createLucideIcon("message-circle", __iconNode$2);
+const Sun = createLucideIcon("sun", __iconNode$2);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -27108,6 +27217,41 @@ function Button({
     }
   );
 }
+function ThemeToggle({ className = "" }) {
+  const { resolvedTheme, setTheme } = z();
+  const [mounted, setMounted] = reactExports.useState(false);
+  reactExports.useEffect(() => setMounted(true), []);
+  if (!mounted) {
+    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: `h-9 w-9 rounded-md ${className}`, "aria-hidden": "true" });
+  }
+  const isDark = resolvedTheme === "dark";
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs(
+    "button",
+    {
+      type: "button",
+      "data-ocid": "header.theme_toggle",
+      "aria-label": isDark ? "Switch to light mode" : "Switch to dark mode",
+      onClick: () => setTheme(isDark ? "light" : "dark"),
+      className: `relative flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${className}`,
+      children: [
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Sun,
+          {
+            className: "h-[1.1rem] w-[1.1rem] rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0",
+            "aria-hidden": "true"
+          }
+        ),
+        /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Moon,
+          {
+            className: "absolute h-[1.1rem] w-[1.1rem] rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100",
+            "aria-hidden": "true"
+          }
+        )
+      ]
+    }
+  );
+}
 function Header() {
   const [menuOpen, setMenuOpen] = reactExports.useState(false);
   const [scrolled, setScrolled] = reactExports.useState(false);
@@ -27169,27 +27313,33 @@ function Header() {
                   }
                 ) }, link.href);
               }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "hidden md:flex items-center gap-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-                Button,
-                {
-                  "data-ocid": "header.cta_button",
-                  className: "gradient-primary text-white font-semibold border-0 hover:opacity-90 transition-smooth hover:scale-[1.02]",
-                  children: "Get a Free Quote"
-                }
-              ) }) }),
-              /* @__PURE__ */ jsxRuntimeExports.jsx(
-                "button",
-                {
-                  type: "button",
-                  "data-ocid": "header.mobile_menu_toggle",
-                  "aria-label": menuOpen ? "Close navigation menu" : "Open navigation menu",
-                  "aria-expanded": menuOpen,
-                  "aria-controls": "mobile-nav",
-                  onClick: () => setMenuOpen((v) => !v),
-                  className: "md:hidden flex items-center justify-center h-10 w-10 rounded-md text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                  children: menuOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-5 w-5", "aria-hidden": "true" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Menu, { className: "h-5 w-5", "aria-hidden": "true" })
-                }
-              )
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "hidden md:flex items-center gap-2", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(ThemeToggle, {}),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  Button,
+                  {
+                    "data-ocid": "header.cta_button",
+                    className: "gradient-primary text-white font-semibold border-0 hover:opacity-90 transition-smooth hover:scale-[1.02]",
+                    children: "Get a Free Quote"
+                  }
+                ) })
+              ] }),
+              /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "md:hidden flex items-center gap-1", children: [
+                /* @__PURE__ */ jsxRuntimeExports.jsx(ThemeToggle, {}),
+                /* @__PURE__ */ jsxRuntimeExports.jsx(
+                  "button",
+                  {
+                    type: "button",
+                    "data-ocid": "header.mobile_menu_toggle",
+                    "aria-label": menuOpen ? "Close navigation menu" : "Open navigation menu",
+                    "aria-expanded": menuOpen,
+                    "aria-controls": "mobile-nav",
+                    onClick: () => setMenuOpen((v) => !v),
+                    className: "flex items-center justify-center h-10 w-10 rounded-md text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    children: menuOpen ? /* @__PURE__ */ jsxRuntimeExports.jsx(X, { className: "h-5 w-5", "aria-hidden": "true" }) : /* @__PURE__ */ jsxRuntimeExports.jsx(Menu, { className: "h-5 w-5", "aria-hidden": "true" })
+                  }
+                )
+              ] })
             ]
           }
         ),
@@ -27256,11 +27406,11 @@ function Layout({ children }) {
     /* @__PURE__ */ jsxRuntimeExports.jsx(WhatsAppButton, {})
   ] });
 }
-const HomePage = reactExports.lazy(() => __vitePreload(() => import("./Home-DRRyQEDy.js"), true ? __vite__mapDeps([0,1,2,3,4]) : void 0));
-const ServicesPage = reactExports.lazy(() => __vitePreload(() => import("./Services-C2_6LL8S.js"), true ? __vite__mapDeps([5,1,3,4,6,7]) : void 0));
-const PortfolioPage = reactExports.lazy(() => __vitePreload(() => import("./Portfolio-jFdyEObj.js"), true ? __vite__mapDeps([8,1]) : void 0));
-const AboutPage = reactExports.lazy(() => __vitePreload(() => import("./About-DxWATFyU.js"), true ? __vite__mapDeps([9,1,2,10,3,6,7]) : void 0));
-const ContactPage = reactExports.lazy(() => __vitePreload(() => import("./Contact-Dt7flFd_.js"), true ? __vite__mapDeps([11,1,10,6]) : void 0));
+const HomePage = reactExports.lazy(() => __vitePreload(() => import("./Home-WEBPhTTg.js"), true ? __vite__mapDeps([0,1,2,3,4]) : void 0));
+const ServicesPage = reactExports.lazy(() => __vitePreload(() => import("./Services-CkfNZD0f.js"), true ? __vite__mapDeps([5,1,3,4,6,7]) : void 0));
+const PortfolioPage = reactExports.lazy(() => __vitePreload(() => import("./Portfolio-BUUS-anm.js"), true ? __vite__mapDeps([8,1]) : void 0));
+const AboutPage = reactExports.lazy(() => __vitePreload(() => import("./About-DZp9WGi8.js"), true ? __vite__mapDeps([9,1,2,10,3,6,7]) : void 0));
+const ContactPage = reactExports.lazy(() => __vitePreload(() => import("./Contact-CW7mD7ai.js"), true ? __vite__mapDeps([11,1,10,6]) : void 0));
 function PageLoader() {
   return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 py-24 flex flex-col gap-6", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-12 w-2/3 rounded-lg" }),
@@ -27269,8 +27419,21 @@ function PageLoader() {
     /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8", children: ["sk1", "sk2", "sk3"].map((id) => /* @__PURE__ */ jsxRuntimeExports.jsx(Skeleton, { className: "h-48 rounded-xl" }, id)) })
   ] });
 }
+function ScrollToTop() {
+  const router2 = useRouter();
+  reactExports.useEffect(() => {
+    const unsub = router2.subscribe("onResolved", () => {
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    });
+    return unsub;
+  }, [router2]);
+  return null;
+}
 const rootRoute = createRootRoute({
-  component: () => /* @__PURE__ */ jsxRuntimeExports.jsx(Layout, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx(PageLoader, {}), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) }) })
+  component: () => /* @__PURE__ */ jsxRuntimeExports.jsxs(Layout, { children: [
+    /* @__PURE__ */ jsxRuntimeExports.jsx(ScrollToTop, {}),
+    /* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.Suspense, { fallback: /* @__PURE__ */ jsxRuntimeExports.jsx(PageLoader, {}), children: /* @__PURE__ */ jsxRuntimeExports.jsx(Outlet, {}) })
+  ] })
 });
 const indexRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -27319,7 +27482,16 @@ BigInt.prototype.toJSON = function() {
 };
 const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
-  /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(InternetIdentityProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) })
+  /* @__PURE__ */ jsxRuntimeExports.jsx(
+    J,
+    {
+      attribute: "class",
+      defaultTheme: "system",
+      enableSystem: true,
+      disableTransitionOnChange: false,
+      children: /* @__PURE__ */ jsxRuntimeExports.jsx(QueryClientProvider, { client: queryClient, children: /* @__PURE__ */ jsxRuntimeExports.jsx(InternetIdentityProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(App, {}) }) })
+    }
+  )
 );
 export {
   Button as B,

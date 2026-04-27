@@ -1,4 +1,4 @@
-import { c as createLucideIcon } from "./index-DeFUeZ_J.js";
+import { c as createLucideIcon } from "./index-cdHKX1FX.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -35,6 +35,6 @@ const __iconNode = [
 const TrendingUp = createLucideIcon("trending-up", __iconNode);
 export {
   ArrowRight as A,
-  Target as T,
-  TrendingUp as a
+  TrendingUp as T,
+  Target as a
 };

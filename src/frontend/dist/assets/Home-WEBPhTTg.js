@@ -1,8 +1,8 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Link, B as Button, S as SERVICES, W as WHY_CHOOSE_US, P as PORTFOLIO_ITEMS, a as PROCESS_STEPS, T as TESTIMONIALS, Z as Zap } from "./index-DeFUeZ_J.js";
-import { B as Badge } from "./badge-C4zfDj-Y.js";
-import { R as Rocket, C as Card, a as CardContent, S as Star } from "./card-Cqvk43sN.js";
-import { m as motion } from "./proxy-BvR9mUxs.js";
-import { A as ArrowRight, T as Target, a as TrendingUp } from "./trending-up-CdP2YUwK.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, L as Link, B as Button, S as SERVICES, W as WHY_CHOOSE_US, P as PORTFOLIO_ITEMS, a as PROCESS_STEPS, T as TESTIMONIALS, Z as Zap } from "./index-cdHKX1FX.js";
+import { B as Badge } from "./badge-BVWNPwr0.js";
+import { R as Rocket, C as Card, a as CardContent, S as Star } from "./card-jjXv-ZwK.js";
+import { m as motion } from "./proxy-B8Wf2Yrr.js";
+import { T as TrendingUp, A as ArrowRight, a as Target } from "./trending-up-DwSXwnvx.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -186,6 +186,40 @@ const CATEGORY_BADGE = {
   Ads: "bg-muted text-foreground border-border",
   Website: "bg-secondary text-secondary-foreground border-border"
 };
+const HERO_SERVICES = [
+  {
+    icon: TrendingUp,
+    label: "Digital Marketing",
+    desc: "Meta Ads · Growth",
+    color: "from-primary/20 to-primary/5 border-primary/30",
+    iconBg: "bg-primary/15",
+    iconColor: "text-primary"
+  },
+  {
+    icon: CodeXml,
+    label: "Website Development",
+    desc: "React · Full-Stack",
+    color: "from-accent/20 to-accent/5 border-accent/30",
+    iconBg: "bg-accent/15",
+    iconColor: "text-accent"
+  },
+  {
+    icon: PenTool,
+    label: "UI/UX Design",
+    desc: "Web · Mobile Apps",
+    color: "from-primary/15 to-accent/10 border-primary/25",
+    iconBg: "bg-primary/10",
+    iconColor: "text-primary"
+  },
+  {
+    icon: ShoppingBag,
+    label: "E-commerce Solutions",
+    desc: "Shopify · WordPress",
+    color: "from-accent/15 to-primary/10 border-accent/25",
+    iconBg: "bg-accent/10",
+    iconColor: "text-accent"
+  }
+];
 function ServiceCard({ service, index }) {
   const Icon = ICON_MAP[service.icon] ?? TrendingUp;
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -299,7 +333,7 @@ function ProcessCard({ step, index }) {
           {
             className: "hidden lg:block absolute top-8 left-[calc(50%+2.5rem)] w-[calc(100%-5rem)] h-px",
             style: {
-              background: "linear-gradient(90deg, oklch(0.7 0.22 280 / 0.5) 0%, transparent 100%)"
+              background: "linear-gradient(90deg, oklch(var(--primary) / 0.5) 0%, transparent 100%)"
             },
             "aria-hidden": "true"
           }
@@ -376,7 +410,7 @@ function HomePage() {
             "div",
             {
               className: "absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none",
-              style: { background: "oklch(0.7 0.22 280 / 0.6)" },
+              style: { background: "oklch(var(--primary) / 0.6)" },
               "aria-hidden": "true"
             }
           ),
@@ -384,11 +418,11 @@ function HomePage() {
             "div",
             {
               className: "absolute bottom-1/3 right-1/3 w-64 h-64 rounded-full opacity-15 blur-3xl pointer-events-none",
-              style: { background: "oklch(0.72 0.24 210 / 0.5)" },
+              style: { background: "oklch(var(--accent) / 0.5)" },
               "aria-hidden": "true"
             }
           ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-3xl", children: [
+          /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 py-20 lg:py-28", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "max-w-4xl", children: [
             /* @__PURE__ */ jsxRuntimeExports.jsx(
               motion.div,
               {
@@ -426,9 +460,41 @@ function HomePage() {
                 initial: { opacity: 0, y: 16 },
                 animate: { opacity: 1, y: 0 },
                 transition: { duration: 0.55, delay: 0.2 },
-                className: "text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10 max-w-xl",
+                className: "text-lg sm:text-xl text-muted-foreground leading-relaxed mb-8 max-w-2xl",
                 "data-ocid": "hero.subheading",
                 children: "We craft cutting-edge digital solutions — from Meta Ads and UI/UX design to full-stack web and e-commerce development — that drive growth for ambitious businesses."
+              }
+            ),
+            /* @__PURE__ */ jsxRuntimeExports.jsx(
+              motion.div,
+              {
+                initial: { opacity: 0, y: 20 },
+                animate: { opacity: 1, y: 0 },
+                transition: { duration: 0.55, delay: 0.3 },
+                className: "grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10",
+                "data-ocid": "hero.services",
+                children: HERO_SERVICES.map((svc, i) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                  motion.div,
+                  {
+                    initial: { opacity: 0, y: 16 },
+                    animate: { opacity: 1, y: 0 },
+                    transition: { duration: 0.4, delay: 0.35 + i * 0.08 },
+                    "data-ocid": `hero.service.${i + 1}`,
+                    className: `group relative rounded-xl border bg-gradient-to-br ${svc.color} p-3.5 cursor-default hover:scale-[1.03] transition-smooth`,
+                    children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        "div",
+                        {
+                          className: `w-8 h-8 rounded-lg ${svc.iconBg} border border-current/10 flex items-center justify-center mb-2.5`,
+                          children: /* @__PURE__ */ jsxRuntimeExports.jsx(svc.icon, { className: `w-4 h-4 ${svc.iconColor}` })
+                        }
+                      ),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display font-semibold text-foreground text-sm leading-tight mb-0.5", children: svc.label }),
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-xs", children: svc.desc })
+                    ]
+                  },
+                  svc.label
+                ))
               }
             ),
             /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -436,7 +502,7 @@ function HomePage() {
               {
                 initial: { opacity: 0, y: 16 },
                 animate: { opacity: 1, y: 0 },
-                transition: { duration: 0.5, delay: 0.3 },
+                transition: { duration: 0.5, delay: 0.65 },
                 className: "flex flex-wrap gap-4",
                 children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -469,8 +535,8 @@ function HomePage() {
               {
                 initial: { opacity: 0 },
                 animate: { opacity: 1 },
-                transition: { duration: 0.5, delay: 0.5 },
-                className: "mt-14 flex flex-wrap gap-8",
+                transition: { duration: 0.5, delay: 0.8 },
+                className: "mt-12 flex flex-wrap gap-8",
                 children: [
                   { value: "50+", label: "Projects Delivered" },
                   { value: "30+", label: "Happy Clients" },
@@ -770,7 +836,7 @@ function HomePage() {
             transition: { duration: 0.55 },
             className: "relative rounded-3xl overflow-hidden p-[1px] shadow-elevated",
             style: {
-              background: "linear-gradient(135deg, oklch(0.7 0.22 280) 0%, oklch(0.72 0.24 210) 100%)"
+              background: "linear-gradient(135deg, oklch(var(--primary)) 0%, oklch(var(--accent)) 100%)"
             },
             children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "bg-card rounded-[calc(1.5rem-1px)] px-8 py-16 sm:py-20 text-center relative overflow-hidden", children: [
               /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -778,7 +844,7 @@ function HomePage() {
                 {
                   className: "absolute inset-0 opacity-10 pointer-events-none",
                   style: {
-                    background: "radial-gradient(ellipse 70% 50% at 50% 50%, oklch(0.7 0.22 280) 0%, transparent 70%)"
+                    background: "radial-gradient(ellipse 70% 50% at 50% 50%, oklch(var(--primary)) 0%, transparent 70%)"
                   },
                   "aria-hidden": "true"
                 }

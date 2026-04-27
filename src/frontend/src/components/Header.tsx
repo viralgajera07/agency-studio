@@ -1,8 +1,43 @@
 import { Button } from "@/components/ui/button";
 import { Link, useRouter, useRouterState } from "@tanstack/react-router";
-import { Menu, X, Zap } from "lucide-react";
+import { Menu, Moon, Sun, X, Zap } from "lucide-react";
+import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { NAV_LINKS } from "../data/sampleData";
+
+function ThemeToggle({ className = "" }: { className?: string }) {
+  const { resolvedTheme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) {
+    return (
+      <div className={`h-9 w-9 rounded-md ${className}`} aria-hidden="true" />
+    );
+  }
+
+  const isDark = resolvedTheme === "dark";
+
+  return (
+    <button
+      type="button"
+      data-ocid="header.theme_toggle"
+      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      className={`relative flex h-9 w-9 items-center justify-center rounded-md text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${className}`}
+    >
+      <Sun
+        className="h-[1.1rem] w-[1.1rem] rotate-0 scale-100 transition-all duration-300 dark:-rotate-90 dark:scale-0"
+        aria-hidden="true"
+      />
+      <Moon
+        className="absolute h-[1.1rem] w-[1.1rem] rotate-90 scale-0 transition-all duration-300 dark:rotate-0 dark:scale-100"
+        aria-hidden="true"
+      />
+    </button>
+  );
+}
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,12 +52,10 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     return router.subscribe("onResolved", () => setMenuOpen(false));
   }, [router]);
 
-  // Prevent body scroll when mobile menu open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => {
@@ -82,7 +115,8 @@ export function Header() {
         </ul>
 
         {/* Desktop CTA */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <Link to="/contact">
             <Button
               data-ocid="header.cta_button"
@@ -93,24 +127,27 @@ export function Header() {
           </Link>
         </div>
 
-        {/* Mobile menu toggle */}
-        <button
-          type="button"
-          data-ocid="header.mobile_menu_toggle"
-          aria-label={
-            menuOpen ? "Close navigation menu" : "Open navigation menu"
-          }
-          aria-expanded={menuOpen}
-          aria-controls="mobile-nav"
-          onClick={() => setMenuOpen((v) => !v)}
-          className="md:hidden flex items-center justify-center h-10 w-10 rounded-md text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-        >
-          {menuOpen ? (
-            <X className="h-5 w-5" aria-hidden="true" />
-          ) : (
-            <Menu className="h-5 w-5" aria-hidden="true" />
-          )}
-        </button>
+        {/* Mobile controls */}
+        <div className="md:hidden flex items-center gap-1">
+          <ThemeToggle />
+          <button
+            type="button"
+            data-ocid="header.mobile_menu_toggle"
+            aria-label={
+              menuOpen ? "Close navigation menu" : "Open navigation menu"
+            }
+            aria-expanded={menuOpen}
+            aria-controls="mobile-nav"
+            onClick={() => setMenuOpen((v) => !v)}
+            className="flex items-center justify-center h-10 w-10 rounded-md text-foreground hover:bg-muted/50 transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {menuOpen ? (
+              <X className="h-5 w-5" aria-hidden="true" />
+            ) : (
+              <Menu className="h-5 w-5" aria-hidden="true" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile drawer */}

@@ -94,7 +94,7 @@ const VALUES = [
 
 export default function About() {
   return (
-    <div className="dark" data-ocid="about.page">
+    <div data-ocid="about.page">
       {/* ── Page Hero ────────────────────────────────────────────────────── */}
       <section
         aria-labelledby="about-hero-heading"

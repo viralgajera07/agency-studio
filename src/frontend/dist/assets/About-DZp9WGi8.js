@@ -1,10 +1,10 @@
-import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, b as cn, C as COMPANY_NAME, Z as Zap, B as Button, L as Link } from "./index-DeFUeZ_J.js";
-import { B as Badge } from "./badge-C4zfDj-Y.js";
-import { S as Star, C as Card, a as CardContent, R as Rocket } from "./card-Cqvk43sN.js";
-import { P as Primitive } from "./index-C1u7carQ.js";
-import { m as motion } from "./proxy-BvR9mUxs.js";
-import { C as CircleCheck } from "./circle-check-BJ6P2_x-.js";
-import { U as Users } from "./users-BljWSlF_.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, b as cn, C as COMPANY_NAME, Z as Zap, B as Button, L as Link } from "./index-cdHKX1FX.js";
+import { B as Badge } from "./badge-BVWNPwr0.js";
+import { S as Star, C as Card, a as CardContent, R as Rocket } from "./card-jjXv-ZwK.js";
+import { P as Primitive } from "./index-CIzIc9uW.js";
+import { m as motion } from "./proxy-B8Wf2Yrr.js";
+import { C as CircleCheck } from "./circle-check-CY1yxMov.js";
+import { U as Users } from "./users-BHdFD3Oe.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -171,7 +171,7 @@ const VALUES = [
   { label: "Partnership", description: "We grow when you grow" }
 ];
 function About() {
-  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "dark", "data-ocid": "about.page", children: [
+  return /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { "data-ocid": "about.page", children: [
     /* @__PURE__ */ jsxRuntimeExports.jsxs(
       "section",
       {
