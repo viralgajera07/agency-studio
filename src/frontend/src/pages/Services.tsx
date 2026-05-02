@@ -30,6 +30,7 @@ interface ServiceData {
   accentClass: string;
   bgAccent: string;
   platforms?: string[];
+  detailPath: string;
 }
 
 const SERVICES: ServiceData[] = [
@@ -65,6 +66,7 @@ const SERVICES: ServiceData[] = [
     ],
     accentClass: "text-primary",
     bgAccent: "from-primary/20 to-accent/10",
+    detailPath: "/services/digital-marketing",
   },
   {
     id: "website-development",
@@ -98,6 +100,7 @@ const SERVICES: ServiceData[] = [
     ],
     accentClass: "text-accent",
     bgAccent: "from-accent/20 to-primary/10",
+    detailPath: "/services/website-design",
   },
   {
     id: "uiux-design",
@@ -132,6 +135,7 @@ const SERVICES: ServiceData[] = [
     ],
     accentClass: "text-primary",
     bgAccent: "from-primary/15 to-accent/15",
+    detailPath: "/services/ui-ux-design",
   },
   {
     id: "ecommerce",
@@ -166,6 +170,7 @@ const SERVICES: ServiceData[] = [
     platforms: ["Shopify", "ShopDeck", "SmartBiz", "WordPress"],
     accentClass: "text-accent",
     bgAccent: "from-accent/15 to-primary/15",
+    detailPath: "/services/ecommerce-development",
   },
 ];
 
@@ -311,15 +316,27 @@ export default function Services() {
                     </div>
                   )}
 
-                  <Link to="/contact">
-                    <Button
-                      data-ocid={`services.${service.id}.cta_button`}
-                      className="gradient-primary text-primary-foreground border-0 font-semibold px-6 py-2.5 h-auto transition-smooth hover:opacity-90 hover:scale-[1.02]"
-                    >
-                      Get Started
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Button>
-                  </Link>
+                  <div className="flex flex-wrap gap-3">
+                    <Link to="/contact">
+                      <Button
+                        data-ocid={`services.${service.id}.cta_button`}
+                        className="gradient-primary text-primary-foreground border-0 font-semibold px-6 py-2.5 h-auto transition-smooth hover:shadow-glow hover:scale-[1.04] btn-shine"
+                      >
+                        Get Started
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
+                    <Link to={service.detailPath}>
+                      <Button
+                        data-ocid={`services.${service.id}.details_button`}
+                        variant="outline"
+                        className="font-semibold px-6 py-2.5 h-auto border-border hover:bg-muted hover:border-primary/40 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth"
+                      >
+                        View Full Details
+                        <ArrowRight className="ml-2 w-4 h-4" />
+                      </Button>
+                    </Link>
+                  </div>
                 </motion.div>
 
                 {/* Features card side */}
@@ -331,7 +348,7 @@ export default function Services() {
                   viewport={{ once: true, margin: "-80px" }}
                 >
                   <div
-                    className={`relative rounded-2xl bg-gradient-to-br ${service.bgAccent} p-1 shadow-elevated`}
+                    className={`relative rounded-2xl bg-gradient-to-br ${service.bgAccent} p-1 shadow-elevated hover:shadow-glow transition-smooth`}
                   >
                     <div className="rounded-xl bg-card p-6 md:p-8">
                       <p className="font-display text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6">
@@ -349,7 +366,7 @@ export default function Services() {
                             className="flex items-start gap-4 group"
                           >
                             <span
-                              className={`mt-0.5 flex-shrink-0 p-2 rounded-lg bg-muted ${service.accentClass} transition-smooth group-hover:scale-110`}
+                              className={`mt-0.5 flex-shrink-0 p-2 rounded-lg bg-muted ${service.accentClass} transition-smooth group-hover:scale-110 group-hover:bg-primary/20 icon-bounce`}
                             >
                               {feature.icon}
                             </span>

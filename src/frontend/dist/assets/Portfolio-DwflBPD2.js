@@ -1,5 +1,5 @@
-import { r as reactExports, P as PORTFOLIO_ITEMS, j as jsxRuntimeExports, B as Button, L as Link } from "./index-cdHKX1FX.js";
-import { B as Badge } from "./badge-BVWNPwr0.js";
+import { r as reactExports, P as PORTFOLIO_ITEMS, j as jsxRuntimeExports, m as motion, B as Button, A as AnimatePresence, L as Link } from "./index-CWaMM7uw.js";
+import { B as Badge } from "./badge-HKWYsiW8.js";
 const FILTERS = [
   "All",
   "Digital Marketing",
@@ -33,10 +33,24 @@ const CATEGORY_DISPLAY = {
 function PortfolioCard({ item, index }) {
   const [imgError, setImgError] = reactExports.useState(false);
   return /* @__PURE__ */ jsxRuntimeExports.jsxs(
-    "article",
+    motion.article,
     {
+      layout: true,
       "data-ocid": `portfolio.item.${index + 1}`,
-      className: "group relative rounded-2xl overflow-hidden bg-card border border-border/50 shadow-card hover:shadow-elevated transition-smooth hover:-translate-y-1 hover:border-primary/30 cursor-pointer",
+      initial: { opacity: 0, y: 24, scale: 0.96 },
+      animate: { opacity: 1, y: 0, scale: 1 },
+      exit: { opacity: 0, scale: 0.92 },
+      transition: {
+        duration: 0.4,
+        delay: index * 0.06,
+        type: "spring",
+        stiffness: 200
+      },
+      whileHover: {
+        y: -6,
+        transition: { type: "spring", stiffness: 300, damping: 20 }
+      },
+      className: "group relative rounded-2xl overflow-hidden bg-card border border-border/50 shadow-card hover:shadow-glow transition-smooth hover:border-primary/30 cursor-pointer border-glow",
       children: [
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "relative h-52 overflow-hidden", children: [
           !imgError ? /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -46,7 +60,7 @@ function PortfolioCard({ item, index }) {
               alt: item.title,
               loading: "lazy",
               onError: () => setImgError(true),
-              className: "w-full h-full object-cover transition-smooth group-hover:scale-105"
+              className: "w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
             }
           ) : null,
           /* @__PURE__ */ jsxRuntimeExports.jsx(
@@ -55,6 +69,10 @@ function PortfolioCard({ item, index }) {
               className: `absolute inset-0 bg-gradient-to-br ${CATEGORY_GRADIENTS[item.category]} ${!imgError ? "opacity-40 group-hover:opacity-60" : "opacity-90"} transition-smooth`
             }
           ),
+          /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "portfolio-overlay", children: [
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-white font-display font-semibold text-sm leading-tight", children: item.title }),
+            /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-white/80 text-xs mt-0.5 line-clamp-2", children: item.description })
+          ] }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-3 left-3", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
             "span",
             {
@@ -64,13 +82,13 @@ function PortfolioCard({ item, index }) {
           ) })
         ] }),
         /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-5", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display font-semibold text-lg text-foreground leading-tight mb-1.5 truncate", children: item.title }),
+          /* @__PURE__ */ jsxRuntimeExports.jsx("h2", { className: "font-display font-semibold text-lg text-foreground leading-tight mb-1.5 truncate group-hover:text-primary transition-smooth", children: item.title }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-3", children: item.description }),
           /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex flex-wrap gap-1.5", children: item.tags.map((tag) => /* @__PURE__ */ jsxRuntimeExports.jsx(
             Badge,
             {
               variant: "secondary",
-              className: "text-xs px-2 py-0.5 bg-muted/80 text-muted-foreground border-0",
+              className: "text-xs px-2 py-0.5 bg-muted/80 text-muted-foreground border-0 hover:bg-primary/10 hover:text-primary transition-smooth",
               children: tag
             },
             tag
@@ -87,24 +105,19 @@ function Portfolio() {
     return FILTERS.find((f) => f === param) ?? "All";
   };
   const [activeFilter, setActiveFilter] = reactExports.useState(getInitialFilter);
-  const [visible, setVisible] = reactExports.useState(true);
   const transitionTimeout = reactExports.useRef(null);
   const handleFilter = reactExports.useCallback(
     (filter) => {
       if (filter === activeFilter) return;
-      setVisible(false);
       if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
-      transitionTimeout.current = setTimeout(() => {
-        setActiveFilter(filter);
-        const url = new URL(window.location.href);
-        if (filter === "All") {
-          url.searchParams.delete("category");
-        } else {
-          url.searchParams.set("category", filter);
-        }
-        window.history.replaceState({}, "", url.toString());
-        setVisible(true);
-      }, 200);
+      setActiveFilter(filter);
+      const url = new URL(window.location.href);
+      if (filter === "All") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", filter);
+      }
+      window.history.replaceState({}, "", url.toString());
     },
     [activeFilter]
   );
@@ -153,15 +166,23 @@ function Portfolio() {
           const isActive = filter === activeFilter;
           const ocid = `portfolio.filter.${filter.toLowerCase().replace(/[^a-z0-9]/g, "_")}`;
           return /* @__PURE__ */ jsxRuntimeExports.jsx(
-            Button,
+            motion.div,
             {
-              "data-ocid": ocid,
-              variant: isActive ? "default" : "outline",
-              size: "sm",
-              onClick: () => handleFilter(filter),
-              "aria-pressed": isActive,
-              className: `rounded-full px-4 transition-smooth font-medium ${isActive ? "gradient-primary text-white border-0 shadow-md" : "border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 bg-transparent"}`,
-              children: filter
+              whileHover: { scale: 1.04 },
+              whileTap: { scale: 0.97 },
+              transition: { type: "spring", stiffness: 300 },
+              children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                Button,
+                {
+                  "data-ocid": ocid,
+                  variant: isActive ? "default" : "outline",
+                  size: "sm",
+                  onClick: () => handleFilter(filter),
+                  "aria-pressed": isActive,
+                  className: `relative rounded-full px-4 transition-smooth font-medium ${isActive ? "gradient-primary text-white border-0 shadow-glow-sm btn-shine" : "border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 bg-transparent"}`,
+                  children: filter
+                }
+              )
             },
             filter
           );
@@ -187,14 +208,18 @@ function Portfolio() {
               /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-primary font-semibold", children: activeFilter })
             ] })
           ] }),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            "div",
+          /* @__PURE__ */ jsxRuntimeExports.jsx(AnimatePresence, { mode: "wait", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+            motion.div,
             {
-              className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 transition-opacity duration-200",
-              style: { opacity: visible ? 1 : 0 },
+              className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8",
+              initial: { opacity: 0 },
+              animate: { opacity: 1 },
+              exit: { opacity: 0 },
+              transition: { duration: 0.2 },
               children: filtered.map((item, index) => /* @__PURE__ */ jsxRuntimeExports.jsx(PortfolioCard, { item, index }, item.id))
-            }
-          ),
+            },
+            activeFilter
+          ) }),
           filtered.length === 0 && /* @__PURE__ */ jsxRuntimeExports.jsxs(
             "div",
             {

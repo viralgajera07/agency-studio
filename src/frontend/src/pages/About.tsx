@@ -226,12 +226,25 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
+                    whileHover={{
+                      scale: 1.05,
+                      rotateX: 3,
+                      rotateY: i % 2 === 0 ? 3 : -3,
+                      transition: { type: "spring", stiffness: 300 },
+                    }}
+                    style={{
+                      perspective: "600px",
+                      transformStyle: "preserve-3d",
+                    }}
                     data-ocid={`about.stat.${i + 1}`}
                   >
-                    <Card className="glass-card shadow-elevated h-full">
+                    <Card className="glass-card shadow-elevated h-full hover:shadow-glow transition-smooth">
                       <CardContent className="flex flex-col items-center justify-center py-8 text-center gap-3">
-                        <div className="flex h-12 w-12 items-center justify-center rounded-xl gradient-primary">
-                          <Icon className="text-primary-foreground" size={22} />
+                        <div className="flex h-12 w-12 items-center justify-center rounded-xl gradient-primary transition-smooth">
+                          <Icon
+                            className="text-primary-foreground icon-spin"
+                            size={22}
+                          />
                         </div>
                         <span className="font-display text-4xl font-bold gradient-text leading-none">
                           {stat.value}
@@ -289,10 +302,14 @@ export default function About() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.35, delay: i * 0.03 }}
+                whileHover={{
+                  scale: 1.08,
+                  transition: { type: "spring", stiffness: 400 },
+                }}
               >
                 <Badge
                   variant="secondary"
-                  className="px-4 py-2 text-sm font-body font-medium bg-card border border-border/60 text-foreground hover:border-primary/50 hover:text-primary transition-smooth cursor-default"
+                  className="px-4 py-2 text-sm font-body font-medium bg-card border border-border/60 text-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:shadow-glow-sm transition-smooth cursor-default btn-shine"
                 >
                   {skill}
                 </Badge>
@@ -339,13 +356,16 @@ export default function About() {
                   transition={{ duration: 0.5, delay: i * 0.1 }}
                   data-ocid={`about.achievement.${i + 1}`}
                 >
-                  <Card className="glass-card shadow-card h-full hover:border-primary/30 transition-smooth group">
+                  <Card className="glass-card shadow-card h-full hover:border-primary/30 hover:shadow-glow transition-smooth group">
                     <CardContent className="p-6 flex gap-5">
-                      <div className="shrink-0 flex h-11 w-11 items-center justify-center rounded-xl gradient-primary shadow-card group-hover:scale-105 transition-smooth">
-                        <Icon className="text-primary-foreground" size={20} />
+                      <div className="shrink-0 flex h-11 w-11 items-center justify-center rounded-xl gradient-primary shadow-card group-hover:shadow-glow transition-smooth">
+                        <Icon
+                          className="text-primary-foreground icon-spin"
+                          size={20}
+                        />
                       </div>
                       <div>
-                        <h3 className="font-display font-semibold text-foreground text-lg leading-snug">
+                        <h3 className="font-display font-semibold text-foreground text-lg leading-snug group-hover:text-primary transition-smooth">
                           {item.title}
                         </h3>
                         <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
@@ -358,111 +378,6 @@ export default function About() {
               );
             })}
           </div>
-        </div>
-      </section>
-
-      {/* ── Team / Founder Bio ───────────────────────────────────────────── */}
-      <section
-        aria-labelledby="team-heading"
-        className="bg-muted/30 border-y border-border/40 py-20 md:py-28"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
-            className="text-center max-w-xl mx-auto mb-14"
-          >
-            <h2
-              id="team-heading"
-              className="font-display text-3xl font-bold text-foreground sm:text-4xl"
-            >
-              Meet the <span className="gradient-text">Team</span>
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              The creative minds and strategists behind every project.
-            </p>
-          </motion.div>
-
-          {/* Founder card */}
-          <motion.div
-            initial={{ opacity: 0, y: 28 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mx-auto max-w-2xl"
-            data-ocid="about.founder.card"
-          >
-            <Card className="glass-card shadow-elevated overflow-hidden">
-              <CardContent className="p-0">
-                <div className="flex flex-col sm:flex-row">
-                  {/* Avatar area */}
-                  <div
-                    className="relative flex-shrink-0 flex items-center justify-center w-full sm:w-48 h-48 sm:h-auto gradient-primary"
-                    aria-hidden="true"
-                  >
-                    {/* Initials placeholder */}
-                    <div className="flex h-24 w-24 items-center justify-center rounded-full bg-primary-foreground/10 border-2 border-primary-foreground/20 shadow-elevated">
-                      <span className="font-display text-4xl font-bold text-primary-foreground select-none">
-                        AR
-                      </span>
-                    </div>
-                    {/* subtle grid pattern overlay */}
-                    <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px), repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px)",
-                      }}
-                    />
-                  </div>
-
-                  {/* Text area */}
-                  <div className="p-8 flex flex-col justify-center">
-                    <Badge
-                      variant="outline"
-                      className="w-fit mb-3 border-primary/40 text-primary text-xs"
-                    >
-                      Leadership
-                    </Badge>
-                    <h3 className="font-display text-2xl font-bold text-foreground">
-                      Alex Rivera
-                    </h3>
-                    <p className="text-primary font-body font-medium mt-1 text-sm">
-                      Founder &amp; Creative Director
-                    </p>
-                    <Separator className="my-4 bg-border/50" />
-                    <p className="text-muted-foreground text-sm leading-relaxed">
-                      With over a decade of experience spanning digital
-                      marketing, product design, and full-stack web development,
-                      Alex founded {COMPANY_NAME} to bridge the gap between
-                      creative excellence and business performance. Having
-                      worked with startups, D2C brands, and enterprise clients
-                      across India and Southeast Asia, Alex brings a rare
-                      combination of design intuition and data-driven strategy
-                      to every engagement.
-                    </p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {[
-                        "Meta Certified",
-                        "Figma Expert",
-                        "Shopify Partner",
-                      ].map((tag) => (
-                        <Badge
-                          key={tag}
-                          variant="secondary"
-                          className="text-xs font-body bg-card border border-border/60 text-foreground"
-                        >
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
@@ -504,7 +419,7 @@ export default function About() {
                 <Button
                   asChild
                   size="lg"
-                  className="gradient-primary text-primary-foreground font-display font-semibold px-8 shadow-elevated hover:opacity-90 transition-smooth"
+                  className="gradient-primary text-primary-foreground font-display font-semibold px-8 shadow-elevated hover:shadow-glow hover:scale-[1.03] transition-smooth btn-shine"
                   data-ocid="about.cta.primary_button"
                 >
                   <Link to="/contact">Start a Project</Link>

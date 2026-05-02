@@ -18,6 +18,17 @@ const PortfolioPage = lazy(() => import("./pages/Portfolio"));
 const AboutPage = lazy(() => import("./pages/About"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 
+// Service detail pages
+const ServiceDigitalMarketingPage = lazy(
+  () => import("./pages/ServiceDigitalMarketing"),
+);
+const ServiceWebsiteDevPage = lazy(() => import("./pages/ServiceWebsiteDev"));
+const ServiceUIUXPage = lazy(() => import("./pages/ServiceUIUX"));
+const ServiceEcommercePage = lazy(() => import("./pages/ServiceEcommerce"));
+const ServiceRebuildWebsitePage = lazy(
+  () => import("./pages/ServiceRebuildWebsite"),
+);
+
 function PageLoader() {
   return (
     <div className="container mx-auto px-4 py-24 flex flex-col gap-6">
@@ -69,6 +80,36 @@ const servicesRoute = createRoute({
   component: ServicesPage,
 });
 
+const serviceDigitalMarketingRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/digital-marketing",
+  component: ServiceDigitalMarketingPage,
+});
+
+const serviceWebsiteDesignRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/website-design",
+  component: ServiceWebsiteDevPage,
+});
+
+const serviceUIUXRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/ui-ux-design",
+  component: ServiceUIUXPage,
+});
+
+const serviceEcommerceRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/ecommerce-development",
+  component: ServiceEcommercePage,
+});
+
+const serviceRebuildWebsiteRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/services/rebuild-website",
+  component: ServiceRebuildWebsitePage,
+});
+
 const portfolioRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/portfolio",
@@ -96,6 +137,11 @@ const catchAllRoute = createRoute({
 const routeTree = rootRoute.addChildren([
   indexRoute,
   servicesRoute,
+  serviceDigitalMarketingRoute,
+  serviceWebsiteDesignRoute,
+  serviceUIUXRoute,
+  serviceEcommerceRoute,
+  serviceRebuildWebsiteRoute,
   portfolioRoute,
   aboutRoute,
   contactRoute,

@@ -1,52 +1,24 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, L as Link, B as Button } from "./index-cdHKX1FX.js";
-import { B as Badge } from "./badge-BVWNPwr0.js";
-import { m as motion } from "./proxy-B8Wf2Yrr.js";
-import { A as ArrowRight, a as Target, T as TrendingUp } from "./trending-up-DwSXwnvx.js";
-import { C as CircleCheck } from "./circle-check-CY1yxMov.js";
-import { U as Users } from "./users-BHdFD3Oe.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, m as motion, L as Link, B as Button } from "./index-CWaMM7uw.js";
+import { B as Badge } from "./badge-HKWYsiW8.js";
+import { A as ArrowRight } from "./arrow-right-CE_ZPOnn.js";
+import { C as CircleCheck } from "./circle-check-ClyeP4GT.js";
+import { T as Target } from "./target-BBTkJAlX.js";
+import { U as Users } from "./users-CI7xec68.js";
+import { C as ChartColumn } from "./chart-column-h9ZMHvbY.js";
+import { T as TrendingUp } from "./trending-up-BlXuI6_R.js";
+import { M as Megaphone } from "./megaphone-NKE4R5Qn.js";
+import { P as PanelsTopLeft } from "./panels-top-left-CeyxkCT-.js";
+import { S as Smartphone, G as Globe } from "./smartphone-zkJPyas1.js";
+import { S as Search } from "./search-C9u6PWiG.js";
+import { P as Palette } from "./palette-43coOTAM.js";
+import { S as ShoppingCart } from "./shopping-cart-LuPpgmcf.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$8 = [
-  ["path", { d: "M3 3v16a2 2 0 0 0 2 2h16", key: "c24i48" }],
-  ["path", { d: "M18 17V9", key: "2bz60n" }],
-  ["path", { d: "M13 17V5", key: "1frdt8" }],
-  ["path", { d: "M8 17v-3", key: "17ska0" }]
-];
-const ChartColumn = createLucideIcon("chart-column", __iconNode$8);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$7 = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20", key: "13o1zl" }],
-  ["path", { d: "M2 12h20", key: "9i4pu4" }]
-];
-const Globe = createLucideIcon("globe", __iconNode$7);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$6 = [
-  ["path", { d: "m3 11 18-5v12L3 14v-3z", key: "n962bs" }],
-  ["path", { d: "M11.6 16.8a3 3 0 1 1-5.8-1.6", key: "1yl0tm" }]
-];
-const Megaphone = createLucideIcon("megaphone", __iconNode$6);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$5 = [
+const __iconNode = [
   ["path", { d: "M14 4.1 12 6", key: "ita8i4" }],
   ["path", { d: "m5.1 8-2.9-.8", key: "1go3kf" }],
   ["path", { d: "m6 12-1.9 2", key: "mnht97" }],
@@ -59,79 +31,7 @@ const __iconNode$5 = [
     }
   ]
 ];
-const MousePointerClick = createLucideIcon("mouse-pointer-click", __iconNode$5);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$4 = [
-  [
-    "path",
-    {
-      d: "M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z",
-      key: "e79jfc"
-    }
-  ],
-  ["circle", { cx: "13.5", cy: "6.5", r: ".5", fill: "currentColor", key: "1okk4w" }],
-  ["circle", { cx: "17.5", cy: "10.5", r: ".5", fill: "currentColor", key: "f64h9f" }],
-  ["circle", { cx: "6.5", cy: "12.5", r: ".5", fill: "currentColor", key: "qy21gx" }],
-  ["circle", { cx: "8.5", cy: "7.5", r: ".5", fill: "currentColor", key: "fotxhn" }]
-];
-const Palette = createLucideIcon("palette", __iconNode$4);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$3 = [
-  ["rect", { width: "18", height: "18", x: "3", y: "3", rx: "2", key: "afitv7" }],
-  ["path", { d: "M3 9h18", key: "1pudct" }],
-  ["path", { d: "M9 21V9", key: "1oto5p" }]
-];
-const PanelsTopLeft = createLucideIcon("panels-top-left", __iconNode$3);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$2 = [
-  ["path", { d: "m21 21-4.34-4.34", key: "14j7rj" }],
-  ["circle", { cx: "11", cy: "11", r: "8", key: "4ej97u" }]
-];
-const Search = createLucideIcon("search", __iconNode$2);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$1 = [
-  ["circle", { cx: "8", cy: "21", r: "1", key: "jimo8o" }],
-  ["circle", { cx: "19", cy: "21", r: "1", key: "13723u" }],
-  [
-    "path",
-    {
-      d: "M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12",
-      key: "9zh506"
-    }
-  ]
-];
-const ShoppingCart = createLucideIcon("shopping-cart", __iconNode$1);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode = [
-  ["rect", { width: "14", height: "20", x: "5", y: "2", rx: "2", ry: "2", key: "1yt0o3" }],
-  ["path", { d: "M12 18h.01", key: "mhygvu" }]
-];
-const Smartphone = createLucideIcon("smartphone", __iconNode);
+const MousePointerClick = createLucideIcon("mouse-pointer-click", __iconNode);
 const SERVICES = [
   {
     id: "digital-marketing",
@@ -163,7 +63,8 @@ const SERVICES = [
       }
     ],
     accentClass: "text-primary",
-    bgAccent: "from-primary/20 to-accent/10"
+    bgAccent: "from-primary/20 to-accent/10",
+    detailPath: "/services/digital-marketing"
   },
   {
     id: "website-development",
@@ -195,7 +96,8 @@ const SERVICES = [
       }
     ],
     accentClass: "text-accent",
-    bgAccent: "from-accent/20 to-primary/10"
+    bgAccent: "from-accent/20 to-primary/10",
+    detailPath: "/services/website-design"
   },
   {
     id: "uiux-design",
@@ -227,7 +129,8 @@ const SERVICES = [
       }
     ],
     accentClass: "text-primary",
-    bgAccent: "from-primary/15 to-accent/15"
+    bgAccent: "from-primary/15 to-accent/15",
+    detailPath: "/services/ui-ux-design"
   },
   {
     id: "ecommerce",
@@ -260,7 +163,8 @@ const SERVICES = [
     ],
     platforms: ["Shopify", "ShopDeck", "SmartBiz", "WordPress"],
     accentClass: "text-accent",
-    bgAccent: "from-accent/15 to-primary/15"
+    bgAccent: "from-accent/15 to-primary/15",
+    detailPath: "/services/ecommerce-development"
   }
 ];
 const EASE = [0.22, 1, 0.36, 1];
@@ -394,17 +298,31 @@ function Services() {
                         },
                         p
                       )) }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                        Button,
-                        {
-                          "data-ocid": `services.${service.id}.cta_button`,
-                          className: "gradient-primary text-primary-foreground border-0 font-semibold px-6 py-2.5 h-auto transition-smooth hover:opacity-90 hover:scale-[1.02]",
-                          children: [
-                            "Get Started",
-                            /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "ml-2 w-4 h-4" })
-                          ]
-                        }
-                      ) })
+                      /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-wrap gap-3", children: [
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                          Button,
+                          {
+                            "data-ocid": `services.${service.id}.cta_button`,
+                            className: "gradient-primary text-primary-foreground border-0 font-semibold px-6 py-2.5 h-auto transition-smooth hover:shadow-glow hover:scale-[1.04] btn-shine",
+                            children: [
+                              "Get Started",
+                              /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "ml-2 w-4 h-4" })
+                            ]
+                          }
+                        ) }),
+                        /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: service.detailPath, children: /* @__PURE__ */ jsxRuntimeExports.jsxs(
+                          Button,
+                          {
+                            "data-ocid": `services.${service.id}.details_button`,
+                            variant: "outline",
+                            className: "font-semibold px-6 py-2.5 h-auto border-border hover:bg-muted hover:border-primary/40 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth",
+                            children: [
+                              "View Full Details",
+                              /* @__PURE__ */ jsxRuntimeExports.jsx(ArrowRight, { className: "ml-2 w-4 h-4" })
+                            ]
+                          }
+                        ) })
+                      ] })
                     ]
                   }
                 ),
@@ -419,7 +337,7 @@ function Services() {
                     children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                       "div",
                       {
-                        className: `relative rounded-2xl bg-gradient-to-br ${service.bgAccent} p-1 shadow-elevated`,
+                        className: `relative rounded-2xl bg-gradient-to-br ${service.bgAccent} p-1 shadow-elevated hover:shadow-glow transition-smooth`,
                         children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "rounded-xl bg-card p-6 md:p-8", children: [
                           /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "font-display text-sm font-semibold text-muted-foreground uppercase tracking-widest mb-6", children: "What's included" }),
                           /* @__PURE__ */ jsxRuntimeExports.jsx("ul", { className: "space-y-4", children: service.features.map((feature, fi) => /* @__PURE__ */ jsxRuntimeExports.jsxs(
@@ -435,7 +353,7 @@ function Services() {
                                 /* @__PURE__ */ jsxRuntimeExports.jsx(
                                   "span",
                                   {
-                                    className: `mt-0.5 flex-shrink-0 p-2 rounded-lg bg-muted ${service.accentClass} transition-smooth group-hover:scale-110`,
+                                    className: `mt-0.5 flex-shrink-0 p-2 rounded-lg bg-muted ${service.accentClass} transition-smooth group-hover:scale-110 group-hover:bg-primary/20 icon-bounce`,
                                     children: feature.icon
                                   }
                                 ),

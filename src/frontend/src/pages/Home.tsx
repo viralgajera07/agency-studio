@@ -9,28 +9,24 @@ import {
   HeartHandshake,
   Layers,
   PenTool,
-  Quote,
   Rocket,
   ShoppingBag,
   Sparkles,
-  Star,
   Target,
   TrendingUp,
   Zap,
 } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import {
   PORTFOLIO_ITEMS,
   PROCESS_STEPS,
   SERVICES,
-  TESTIMONIALS,
   WHY_CHOOSE_US,
 } from "../data/sampleData";
 import type {
   PortfolioItem,
   ProcessStep,
   Service,
-  Testimonial,
   WhyChooseUsItem,
 } from "../types";
 
@@ -55,7 +51,6 @@ const CATEGORY_BADGE: Record<string, string> = {
   Website: "bg-secondary text-secondary-foreground border-border",
 };
 
-// Hero service mini-cards — separate from the full service section
 const HERO_SERVICES = [
   {
     icon: TrendingUp,
@@ -64,6 +59,7 @@ const HERO_SERVICES = [
     color: "from-primary/20 to-primary/5 border-primary/30",
     iconBg: "bg-primary/15",
     iconColor: "text-primary",
+    href: "/services/digital-marketing" as const,
   },
   {
     icon: Code2,
@@ -72,6 +68,7 @@ const HERO_SERVICES = [
     color: "from-accent/20 to-accent/5 border-accent/30",
     iconBg: "bg-accent/15",
     iconColor: "text-accent",
+    href: "/services/website-design" as const,
   },
   {
     icon: PenTool,
@@ -80,6 +77,7 @@ const HERO_SERVICES = [
     color: "from-primary/15 to-accent/10 border-primary/25",
     iconBg: "bg-primary/10",
     iconColor: "text-primary",
+    href: "/services/ui-ux-design" as const,
   },
   {
     icon: ShoppingBag,
@@ -88,27 +86,40 @@ const HERO_SERVICES = [
     color: "from-accent/15 to-primary/10 border-accent/25",
     iconBg: "bg-accent/10",
     iconColor: "text-accent",
+    href: "/services/ecommerce-development" as const,
   },
 ] as const;
 
+const SERVICE_DETAIL_ROUTES: Record<string, string> = {
+  "digital-marketing": "/services/digital-marketing",
+  "web-development": "/services/website-design",
+  "uiux-design": "/services/ui-ux-design",
+  ecommerce: "/services/ecommerce-development",
+};
+
 function ServiceCard({ service, index }: { service: Service; index: number }) {
   const Icon = ICON_MAP[service.icon] ?? TrendingUp;
+  const detailHref = SERVICE_DETAIL_ROUTES[service.id] ?? "/services";
   return (
     <motion.article
       initial={{ opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.1 }}
+      whileHover={{
+        y: -6,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      }}
       data-ocid={`services.item.${index + 1}`}
-      className="group"
+      className="group border-glow"
     >
-      <Card className="h-full bg-card border-border shadow-card hover:shadow-elevated hover:border-primary/40 transition-smooth">
+      <Card className="h-full bg-card border-border shadow-card hover:shadow-glow transition-smooth hover:border-primary/40">
         <CardContent className="p-6 flex flex-col gap-4">
           <div className="w-12 h-12 rounded-xl gradient-primary flex items-center justify-center shadow-elevated">
-            <Icon className="w-6 h-6 text-primary-foreground" />
+            <Icon className="w-6 h-6 text-primary-foreground icon-spin" />
           </div>
           <div>
-            <h3 className="font-display font-semibold text-lg text-foreground mb-2">
+            <h3 className="font-display font-semibold text-lg text-foreground mb-2 group-hover:text-primary transition-smooth">
               {service.title}
             </h3>
             <p className="text-muted-foreground text-sm leading-relaxed">
@@ -116,11 +127,12 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
             </p>
           </div>
           <Link
-            to="/services"
-            className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-smooth"
+            to={detailHref}
+            className="mt-auto inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:text-accent transition-smooth group/link"
             data-ocid={`services.link.${index + 1}`}
           >
-            Learn more <ArrowRight className="w-4 h-4" />
+            Learn more{" "}
+            <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-smooth" />
           </Link>
         </CardContent>
       </Card>
@@ -136,14 +148,18 @@ function WhyCard({ item, index }: { item: WhyChooseUsItem; index: number }) {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.1 }}
-      className="flex gap-4 items-start"
+      whileHover={{
+        scale: 1.02,
+        transition: { type: "spring", stiffness: 300 },
+      }}
+      className="flex gap-4 items-start group cursor-default"
       data-ocid={`why.item.${index + 1}`}
     >
-      <div className="w-10 h-10 shrink-0 rounded-lg bg-primary/15 border border-primary/25 flex items-center justify-center">
-        <Icon className="w-5 h-5 text-primary" />
+      <div className="w-10 h-10 shrink-0 rounded-lg bg-primary/15 border border-primary/25 flex items-center justify-center transition-smooth group-hover:bg-primary group-hover:border-primary group-hover:shadow-glow-sm">
+        <Icon className="w-5 h-5 text-primary group-hover:text-white icon-spin" />
       </div>
       <div>
-        <h3 className="font-display font-semibold text-foreground mb-1">
+        <h3 className="font-display font-semibold text-foreground mb-1 group-hover:text-primary transition-smooth">
           {item.title}
         </h3>
         <p className="text-muted-foreground text-sm leading-relaxed">
@@ -167,19 +183,29 @@ function PortfolioCard({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
+      whileHover={{ y: -4, transition: { type: "spring", stiffness: 300 } }}
       data-ocid={`portfolio.item.${index + 1}`}
       className="group"
     >
-      <Card className="overflow-hidden bg-card border-border shadow-card hover:shadow-elevated hover:border-primary/30 transition-smooth">
+      <Card className="overflow-hidden bg-card border-border shadow-card hover:shadow-glow hover:border-primary/30 transition-smooth">
         <div className="relative overflow-hidden aspect-[16/10]">
           <img
             src={item.image}
             alt={item.title}
-            className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+            className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
             loading="lazy"
           />
+          {/* Slide-up overlay */}
+          <div className="portfolio-overlay">
+            <p className="text-white font-display font-semibold text-sm leading-tight">
+              {item.title}
+            </p>
+            <p className="text-white/80 text-xs mt-0.5 line-clamp-2">
+              {item.description}
+            </p>
+          </div>
           <Badge
-            className={`absolute top-3 left-3 text-xs font-medium border ${badgeClass}`}
+            className={`absolute top-3 left-3 text-xs font-medium border backdrop-blur-sm ${badgeClass}`}
           >
             {item.category}
           </Badge>
@@ -206,25 +232,34 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.45, delay: index * 0.12 }}
-      className="relative flex flex-col items-center text-center"
+      className="relative flex flex-col items-center text-center group"
       data-ocid={`process.item.${index + 1}`}
     >
       {!isLast && (
-        <div
+        <motion.div
           className="hidden lg:block absolute top-8 left-[calc(50%+2.5rem)] w-[calc(100%-5rem)] h-px"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.2 + 0.3 }}
           style={{
             background:
               "linear-gradient(90deg, oklch(var(--primary) / 0.5) 0%, transparent 100%)",
+            transformOrigin: "left",
           }}
           aria-hidden="true"
         />
       )}
-      <div className="relative z-10 w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center shadow-elevated mb-4">
+      <motion.div
+        whileHover={{ scale: 1.08, rotate: [0, -5, 5, 0] }}
+        transition={{ type: "spring", stiffness: 300 }}
+        className="relative z-10 w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center shadow-elevated mb-4 group-hover:shadow-glow transition-smooth"
+      >
         <Icon className="w-7 h-7 text-primary-foreground" />
-        <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background border border-primary text-primary text-xs font-bold font-display flex items-center justify-center">
+        <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-background border-2 border-primary text-primary text-xs font-bold font-display flex items-center justify-center group-hover:animate-pulse-glow">
           {step.step}
         </span>
-      </div>
+      </motion.div>
       <h3 className="font-display font-semibold text-lg text-foreground mb-2">
         {step.title}
       </h3>
@@ -235,61 +270,9 @@ function ProcessCard({ step, index }: { step: ProcessStep; index: number }) {
   );
 }
 
-function TestimonialCard({
-  testimonial,
-  index,
-}: {
-  testimonial: Testimonial;
-  index: number;
-}) {
-  const initials = testimonial.name
-    .split(" ")
-    .map((n) => n[0])
-    .join("");
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.12 }}
-      data-ocid={`testimonials.item.${index + 1}`}
-    >
-      <Card className="h-full bg-card border-border shadow-card hover:shadow-elevated hover:border-primary/25 transition-smooth">
-        <CardContent className="p-6 flex flex-col gap-4">
-          <div className="flex items-center gap-1">
-            {Array.from(
-              { length: testimonial.rating },
-              (_, i) => `star-${i}`,
-            ).map((key) => (
-              <Star key={key} className="w-4 h-4 fill-primary text-primary" />
-            ))}
-          </div>
-          <Quote className="w-6 h-6 text-primary/40" />
-          <p className="text-foreground text-sm leading-relaxed flex-1 italic">
-            &ldquo;{testimonial.content}&rdquo;
-          </p>
-          <div className="flex items-center gap-3 pt-2 border-t border-border">
-            <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center shrink-0">
-              <span className="text-primary-foreground text-sm font-display font-bold">
-                {initials}
-              </span>
-            </div>
-            <div className="min-w-0">
-              <p className="font-display font-semibold text-foreground text-sm truncate">
-                {testimonial.name}
-              </p>
-              <p className="text-muted-foreground text-xs truncate">
-                {testimonial.role}, {testimonial.company}
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </motion.article>
-  );
-}
-
 export default function HomePage() {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <>
       {/* ── HERO ── */}
@@ -298,22 +281,45 @@ export default function HomePage() {
         className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden gradient-hero"
         aria-label="Hero"
       >
+        {/* Floating orbs */}
+        {!prefersReducedMotion && (
+          <>
+            <div
+              className="floating-orb w-[500px] h-[500px] opacity-25"
+              style={{
+                top: "5%",
+                right: "10%",
+                background: "oklch(var(--primary) / 0.6)",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="floating-orb floating-orb-2 w-72 h-72 opacity-15"
+              style={{
+                bottom: "15%",
+                right: "25%",
+                background: "oklch(var(--accent) / 0.7)",
+              }}
+              aria-hidden="true"
+            />
+            <div
+              className="floating-orb floating-orb-3 w-48 h-48 opacity-15"
+              style={{
+                top: "40%",
+                left: "5%",
+                background: "oklch(var(--primary) / 0.4)",
+              }}
+              aria-hidden="true"
+            />
+          </>
+        )}
+
         <div
           className="absolute inset-0 bg-center bg-cover opacity-20 mix-blend-luminosity"
           style={{
             backgroundImage:
               "url('/assets/generated/hero-bg.dim_1400x800.jpg')",
           }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-20 blur-3xl pointer-events-none"
-          style={{ background: "oklch(var(--primary) / 0.6)" }}
-          aria-hidden="true"
-        />
-        <div
-          className="absolute bottom-1/3 right-1/3 w-64 h-64 rounded-full opacity-15 blur-3xl pointer-events-none"
-          style={{ background: "oklch(var(--accent) / 0.5)" }}
           aria-hidden="true"
         />
 
@@ -340,7 +346,7 @@ export default function HomePage() {
               data-ocid="hero.heading"
             >
               Elevate Your{" "}
-              <span className="gradient-text">Digital Presence</span>
+              <span className="text-shimmer">Digital Presence</span>
             </motion.h1>
 
             <motion.p
@@ -364,24 +370,45 @@ export default function HomePage() {
               data-ocid="hero.services"
             >
               {HERO_SERVICES.map((svc, i) => (
-                <motion.div
+                <Link
                   key={svc.label}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
+                  to={svc.href}
                   data-ocid={`hero.service.${i + 1}`}
-                  className={`group relative rounded-xl border bg-gradient-to-br ${svc.color} p-3.5 cursor-default hover:scale-[1.03] transition-smooth`}
                 >
-                  <div
-                    className={`w-8 h-8 rounded-lg ${svc.iconBg} border border-current/10 flex items-center justify-center mb-2.5`}
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.35 + i * 0.08 }}
+                    whileHover={{
+                      y: -6,
+                      rotateX: 4,
+                      rotateY: 4,
+                      scale: 1.04,
+                      transition: {
+                        type: "spring",
+                        stiffness: 300,
+                        damping: 18,
+                      },
+                    }}
+                    style={{
+                      perspective: "600px",
+                      transformStyle: "preserve-3d",
+                    }}
+                    className={`group relative rounded-xl border bg-gradient-to-br ${svc.color} p-3.5 cursor-pointer border-glow`}
                   >
-                    <svc.icon className={`w-4 h-4 ${svc.iconColor}`} />
-                  </div>
-                  <p className="font-display font-semibold text-foreground text-sm leading-tight mb-0.5">
-                    {svc.label}
-                  </p>
-                  <p className="text-muted-foreground text-xs">{svc.desc}</p>
-                </motion.div>
+                    <div
+                      className={`w-8 h-8 rounded-lg ${svc.iconBg} border border-current/10 flex items-center justify-center mb-2.5`}
+                    >
+                      <svc.icon
+                        className={`w-4 h-4 ${svc.iconColor} icon-spin`}
+                      />
+                    </div>
+                    <p className="font-display font-semibold text-foreground text-sm leading-tight mb-0.5 group-hover:text-primary transition-smooth">
+                      {svc.label}
+                    </p>
+                    <p className="text-muted-foreground text-xs">{svc.desc}</p>
+                  </motion.div>
+                </Link>
               ))}
             </motion.div>
 
@@ -394,7 +421,7 @@ export default function HomePage() {
               <Link to="/contact">
                 <Button
                   size="lg"
-                  className="gradient-primary text-primary-foreground font-semibold font-display px-8 py-3 rounded-xl shadow-elevated hover:opacity-90 transition-smooth border-0"
+                  className="gradient-primary text-primary-foreground font-semibold font-display px-8 py-3 rounded-xl shadow-elevated hover:shadow-glow hover:scale-[1.04] transition-smooth border-0 btn-shine"
                   data-ocid="hero.primary_button"
                 >
                   Book a Free Call
@@ -405,7 +432,7 @@ export default function HomePage() {
                 <Button
                   size="lg"
                   variant="outline"
-                  className="font-semibold font-display px-8 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 transition-smooth"
+                  className="font-semibold font-display px-8 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth"
                   data-ocid="hero.secondary_button"
                 >
                   View Our Work
@@ -423,15 +450,22 @@ export default function HomePage() {
                 { value: "50+", label: "Projects Delivered" },
                 { value: "30+", label: "Happy Clients" },
                 { value: "3×", label: "Average ROI" },
-              ].map((stat) => (
-                <div key={stat.label} className="flex flex-col">
+              ].map((stat, si) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.9 + si * 0.1 }}
+                  whileHover={{ scale: 1.08, transition: { type: "spring" } }}
+                  className="flex flex-col cursor-default"
+                >
                   <span className="font-display text-3xl font-bold gradient-text">
                     {stat.value}
                   </span>
                   <span className="text-muted-foreground text-sm">
                     {stat.label}
                   </span>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </div>
@@ -459,7 +493,7 @@ export default function HomePage() {
               id="services-heading"
               className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4"
             >
-              Our <span className="gradient-text">Services</span>
+              Our <span className="text-shimmer">Services</span>
             </h2>
             <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
               Full-spectrum digital services designed to grow your brand,
@@ -486,7 +520,7 @@ export default function HomePage() {
             <Link to="/services">
               <Button
                 variant="outline"
-                className="font-display font-semibold border-primary/40 hover:bg-primary/10 hover:border-primary transition-smooth"
+                className="font-display font-semibold border-primary/40 hover:bg-primary/10 hover:border-primary hover:shadow-glow-sm hover:scale-[1.02] transition-smooth btn-shine"
                 data-ocid="services.view_all_button"
               >
                 Explore All Services <ArrowRight className="ml-2 w-4 h-4" />
@@ -527,7 +561,7 @@ export default function HomePage() {
               </p>
               <Link to="/contact">
                 <Button
-                  className="gradient-primary text-primary-foreground font-display font-semibold border-0 hover:opacity-90 transition-smooth"
+                  className="gradient-primary text-primary-foreground font-display font-semibold border-0 hover:shadow-glow hover:scale-[1.03] transition-smooth btn-shine"
                   data-ocid="why.cta_button"
                 >
                   Start a Project <ArrowRight className="ml-2 w-4 h-4" />
@@ -595,7 +629,7 @@ export default function HomePage() {
             <Link to="/portfolio">
               <Button
                 variant="outline"
-                className="font-display font-semibold border-primary/40 hover:bg-primary/10 hover:border-primary transition-smooth"
+                className="font-display font-semibold border-primary/40 hover:bg-primary/10 hover:border-primary hover:shadow-glow-sm hover:scale-[1.02] transition-smooth btn-shine"
                 data-ocid="portfolio.view_all_button"
               >
                 View All Projects <ArrowRight className="ml-2 w-4 h-4" />
@@ -645,46 +679,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section
-        id="testimonials"
-        className="py-20 lg:py-28 bg-muted/30"
-        aria-labelledby="testimonials-heading"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="text-center mb-14"
-          >
-            <Badge className="mb-4 border border-accent/40 bg-accent/10 text-accent font-medium px-3 py-1">
-              Client Stories
-            </Badge>
-            <h2
-              id="testimonials-heading"
-              className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4"
-            >
-              What Clients <span className="gradient-text">Say</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Real results, real people — here&apos;s what our clients
-              experience working with us.
-            </p>
-          </motion.div>
-
-          <div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-            data-ocid="testimonials.list"
-          >
-            {TESTIMONIALS.map((t, i) => (
-              <TestimonialCard key={t.id} testimonial={t} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── CTA BANNER ── */}
       <section
         id="cta"
@@ -704,6 +698,29 @@ export default function HomePage() {
             }}
           >
             <div className="bg-card rounded-[calc(1.5rem-1px)] px-8 py-16 sm:py-20 text-center relative overflow-hidden">
+              {/* Animated orbs inside CTA */}
+              {!prefersReducedMotion && (
+                <>
+                  <div
+                    className="floating-orb w-64 h-64 opacity-15"
+                    style={{
+                      top: "-20%",
+                      left: "10%",
+                      background: "oklch(var(--primary) / 0.8)",
+                    }}
+                    aria-hidden="true"
+                  />
+                  <div
+                    className="floating-orb floating-orb-2 w-48 h-48 opacity-10"
+                    style={{
+                      bottom: "-10%",
+                      right: "15%",
+                      background: "oklch(var(--accent) / 0.8)",
+                    }}
+                    aria-hidden="true"
+                  />
+                </>
+              )}
               <div
                 className="absolute inset-0 opacity-10 pointer-events-none"
                 style={{
@@ -717,7 +734,7 @@ export default function HomePage() {
                 className="relative font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-5"
               >
                 Ready to{" "}
-                <span className="gradient-text">Grow Your Business?</span>
+                <span className="text-shimmer">Grow Your Business?</span>
               </h2>
               <p className="relative text-muted-foreground text-lg max-w-2xl mx-auto mb-10">
                 Let&apos;s build something extraordinary together. Book a free
@@ -728,7 +745,7 @@ export default function HomePage() {
                 <Link to="/contact">
                   <Button
                     size="lg"
-                    className="gradient-primary text-primary-foreground font-display font-semibold px-10 py-3 rounded-xl border-0 shadow-elevated hover:opacity-90 transition-smooth"
+                    className="gradient-primary text-primary-foreground font-display font-semibold px-10 py-3 rounded-xl border-0 shadow-elevated hover:shadow-glow hover:scale-[1.04] transition-smooth btn-shine"
                     data-ocid="cta.primary_button"
                   >
                     Book a Free Call <ArrowRight className="ml-2 w-5 h-5" />
@@ -738,7 +755,7 @@ export default function HomePage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="font-display font-semibold px-10 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 transition-smooth"
+                    className="font-display font-semibold px-10 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth"
                     data-ocid="cta.secondary_button"
                   >
                     See Our Work

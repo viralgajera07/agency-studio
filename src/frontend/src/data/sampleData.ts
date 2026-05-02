@@ -281,8 +281,8 @@ export const WHY_CHOOSE_US: WhyChooseUsItem[] = [
   },
 ];
 
-export const COMPANY_NAME = "Nexus Digital";
-export const COMPANY_EMAIL = "hello@nexusdigital.in";
+export const COMPANY_NAME = "Korvex";
+export const COMPANY_EMAIL = "hello@korvex.in";
 export const WHATSAPP_NUMBER = "+919876543210";
 export const WHATSAPP_MESSAGE =
-  "Hi! I'd like to discuss a project with Nexus Digital. Can we connect?";
+  "Hi! I'd like to discuss a project with Korvex. Can we connect?";

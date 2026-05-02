@@ -150,6 +150,20 @@
     -webkit-text-fill-color: transparent;
   }
 
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      oklch(var(--primary)) 0%,
+      oklch(var(--accent)) 40%,
+      oklch(var(--primary)) 80%
+    );
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-text 3s linear infinite;
+  }
+
   .gradient-hero {
     background: radial-gradient(
         ellipse 80% 60% at 70% 40%,
@@ -175,5 +189,302 @@
     background: oklch(var(--card) / 0.6);
     backdrop-filter: blur(12px);
     border: 1px solid oklch(var(--border) / 0.5);
+  }
+
+  /* ── Hover Utilities ─────────────────────────────── */
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow
+      0.3s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 24px oklch(var(--primary) / 0.5), 0 0 48px
+      oklch(var(--primary) / 0.2);
+  }
+
+  /* ── Button Shine Effect ─────────────────────────── */
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.25) 50%,
+      transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+  }
+  .btn-shine:hover::after {
+    left: 140%;
+  }
+
+  /* ── Border Glow ─────────────────────────────────── */
+  .border-glow {
+    position: relative;
+  }
+  .border-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary) / 0),
+      oklch(var(--primary) / 0)
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+  }
+  .border-glow:hover::before {
+    background: linear-gradient(
+      135deg,
+      oklch(var(--primary)),
+      oklch(var(--accent))
+    );
+    opacity: 1;
+  }
+
+  /* ── Floating Orbs ───────────────────────────────── */
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(60px);
+    will-change: transform;
+    animation: float 6s ease-in-out infinite;
+  }
+  .floating-orb-2 {
+    animation: float 8s ease-in-out infinite reverse;
+    animation-delay: -2s;
+  }
+  .floating-orb-3 {
+    animation: float 10s ease-in-out infinite;
+    animation-delay: -4s;
+  }
+
+  /* ── Pulsing Glow ────────────────────────────────── */
+  .animate-pulse-glow {
+    animation: pulse-glow 2.5s ease-in-out infinite;
+  }
+
+  /* ── WhatsApp ripple rings ───────────────────────── */
+  .wa-ring {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: #25d366;
+    opacity: 0;
+    animation: wa-ripple 2.5s ease-out infinite;
+  }
+  .wa-ring-2 {
+    animation-delay: 0.8s;
+  }
+
+  /* ── Spin slow ───────────────────────────────────── */
+  .animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+  }
+
+  /* ── Float ───────────────────────────────────────── */
+  .animate-float {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  /* ── Gradient shift bg ───────────────────────────── */
+  .animate-gradient-shift {
+    background-size: 200% 200%;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  /* ── Nav underline draw ──────────────────────────── */
+  .nav-underline {
+    position: relative;
+  }
+  .nav-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    border-radius: 1px;
+    background: linear-gradient(
+      90deg,
+      oklch(var(--primary)),
+      oklch(var(--accent))
+    );
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-underline:hover::after {
+    width: 100%;
+  }
+
+  /* ── Portfolio card overlay ──────────────────────── */
+  .portfolio-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    background: linear-gradient(
+      to top,
+      oklch(var(--primary) / 0.92) 0%,
+      oklch(var(--accent) / 0.75) 60%,
+      transparent 100%
+    );
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+  .group:hover .portfolio-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── Icon spin on card hover ─────────────────────── */
+  .group:hover .icon-spin {
+    transform: rotate(360deg);
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .icon-spin {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* ── Icon bounce on card hover ───────────────────── */
+  .group:hover .icon-bounce {
+    animation: bounce-once 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+/* ── Keyframes ───────────────────────────────────────── */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+@keyframes shimmer-text {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(var(--primary) / 0.4), 0 0 12px
+      oklch(var(--primary) / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 8px oklch(var(--primary) / 0), 0 0 32px
+      oklch(var(--primary) / 0.5);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wa-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes bounce-once {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.25) rotate(-5deg);
+  }
+  70% {
+    transform: scale(0.9) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes slide-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-pulse-glow,
+  .animate-spin-slow,
+  .animate-gradient-shift,
+  .floating-orb,
+  .floating-orb-2,
+  .floating-orb-3,
+  .wa-ring,
+  .wa-ring-2,
+  .text-shimmer {
+    animation: none !important;
+  }
+  .hover-lift:hover {
+    transform: none;
+  }
+  .btn-shine::after {
+    display: none;
+  }
+  .nav-underline::after {
+    transition: none;
   }
 }

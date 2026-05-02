@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
+import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { PORTFOLIO_ITEMS } from "../data/sampleData";
 import type { PortfolioItem } from "../types";
@@ -64,9 +65,23 @@ function PortfolioCard({ item, index }: PortfolioCardProps) {
   const [imgError, setImgError] = useState(false);
 
   return (
-    <article
+    <motion.article
+      layout
       data-ocid={`portfolio.item.${index + 1}`}
-      className="group relative rounded-2xl overflow-hidden bg-card border border-border/50 shadow-card hover:shadow-elevated transition-smooth hover:-translate-y-1 hover:border-primary/30 cursor-pointer"
+      initial={{ opacity: 0, y: 24, scale: 0.96 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.92 }}
+      transition={{
+        duration: 0.4,
+        delay: index * 0.06,
+        type: "spring",
+        stiffness: 200,
+      }}
+      whileHover={{
+        y: -6,
+        transition: { type: "spring", stiffness: 300, damping: 20 },
+      }}
+      className="group relative rounded-2xl overflow-hidden bg-card border border-border/50 shadow-card hover:shadow-glow transition-smooth hover:border-primary/30 cursor-pointer border-glow"
     >
       {/* Image / Gradient area */}
       <div className="relative h-52 overflow-hidden">
@@ -76,13 +91,22 @@ function PortfolioCard({ item, index }: PortfolioCardProps) {
             alt={item.title}
             loading="lazy"
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover transition-smooth group-hover:scale-105"
+            className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
           />
         ) : null}
-        {/* Gradient overlay — full fallback when image fails */}
+        {/* Gradient overlay */}
         <div
           className={`absolute inset-0 bg-gradient-to-br ${CATEGORY_GRADIENTS[item.category]} ${!imgError ? "opacity-40 group-hover:opacity-60" : "opacity-90"} transition-smooth`}
         />
+        {/* Slide-up overlay with project info */}
+        <div className="portfolio-overlay">
+          <p className="text-white font-display font-semibold text-sm leading-tight">
+            {item.title}
+          </p>
+          <p className="text-white/80 text-xs mt-0.5 line-clamp-2">
+            {item.description}
+          </p>
+        </div>
         {/* Category chip on image */}
         <div className="absolute top-3 left-3">
           <span
@@ -95,7 +119,7 @@ function PortfolioCard({ item, index }: PortfolioCardProps) {
 
       {/* Content */}
       <div className="p-5">
-        <h2 className="font-display font-semibold text-lg text-foreground leading-tight mb-1.5 truncate">
+        <h2 className="font-display font-semibold text-lg text-foreground leading-tight mb-1.5 truncate group-hover:text-primary transition-smooth">
           {item.title}
         </h2>
         <p className="text-muted-foreground text-sm leading-relaxed line-clamp-2 mb-3">
@@ -107,14 +131,14 @@ function PortfolioCard({ item, index }: PortfolioCardProps) {
             <Badge
               key={tag}
               variant="secondary"
-              className="text-xs px-2 py-0.5 bg-muted/80 text-muted-foreground border-0"
+              className="text-xs px-2 py-0.5 bg-muted/80 text-muted-foreground border-0 hover:bg-primary/10 hover:text-primary transition-smooth"
             >
               {tag}
             </Badge>
           ))}
         </div>
       </div>
-    </article>
+    </motion.article>
   );
 }
 
@@ -130,26 +154,20 @@ export default function Portfolio() {
 
   const [activeFilter, setActiveFilter] =
     useState<FilterCategory>(getInitialFilter);
-  const [visible, setVisible] = useState(true);
   const transitionTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleFilter = useCallback(
     (filter: FilterCategory) => {
       if (filter === activeFilter) return;
-      // Fade out → switch → fade in
-      setVisible(false);
       if (transitionTimeout.current) clearTimeout(transitionTimeout.current);
-      transitionTimeout.current = setTimeout(() => {
-        setActiveFilter(filter);
-        const url = new URL(window.location.href);
-        if (filter === "All") {
-          url.searchParams.delete("category");
-        } else {
-          url.searchParams.set("category", filter);
-        }
-        window.history.replaceState({}, "", url.toString());
-        setVisible(true);
-      }, 200);
+      setActiveFilter(filter);
+      const url = new URL(window.location.href);
+      if (filter === "All") {
+        url.searchParams.delete("category");
+      } else {
+        url.searchParams.set("category", filter);
+      }
+      window.history.replaceState({}, "", url.toString());
     },
     [activeFilter],
   );
@@ -216,21 +234,27 @@ export default function Portfolio() {
               const isActive = filter === activeFilter;
               const ocid = `portfolio.filter.${filter.toLowerCase().replace(/[^a-z0-9]/g, "_")}`;
               return (
-                <Button
+                <motion.div
                   key={filter}
-                  data-ocid={ocid}
-                  variant={isActive ? "default" : "outline"}
-                  size="sm"
-                  onClick={() => handleFilter(filter)}
-                  aria-pressed={isActive}
-                  className={`rounded-full px-4 transition-smooth font-medium ${
-                    isActive
-                      ? "gradient-primary text-white border-0 shadow-md"
-                      : "border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 bg-transparent"
-                  }`}
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  {filter}
-                </Button>
+                  <Button
+                    data-ocid={ocid}
+                    variant={isActive ? "default" : "outline"}
+                    size="sm"
+                    onClick={() => handleFilter(filter)}
+                    aria-pressed={isActive}
+                    className={`relative rounded-full px-4 transition-smooth font-medium ${
+                      isActive
+                        ? "gradient-primary text-white border-0 shadow-glow-sm btn-shine"
+                        : "border-border/60 text-muted-foreground hover:text-foreground hover:border-primary/40 bg-transparent"
+                    }`}
+                  >
+                    {filter}
+                  </Button>
+                </motion.div>
               );
             })}
           </nav>
@@ -259,14 +283,20 @@ export default function Portfolio() {
         </p>
 
         {/* Grid with fade transition */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 transition-opacity duration-200"
-          style={{ opacity: visible ? 1 : 0 }}
-        >
-          {filtered.map((item, index) => (
-            <PortfolioCard key={item.id} item={item} index={index} />
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeFilter}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            {filtered.map((item, index) => (
+              <PortfolioCard key={item.id} item={item} index={index} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
 
         {/* Empty state */}
         {filtered.length === 0 && (

@@ -1,17 +1,17 @@
-import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, b as cn, C as COMPANY_NAME, Z as Zap, B as Button, L as Link } from "./index-cdHKX1FX.js";
-import { B as Badge } from "./badge-BVWNPwr0.js";
-import { S as Star, C as Card, a as CardContent, R as Rocket } from "./card-jjXv-ZwK.js";
-import { P as Primitive } from "./index-CIzIc9uW.js";
-import { m as motion } from "./proxy-B8Wf2Yrr.js";
-import { C as CircleCheck } from "./circle-check-CY1yxMov.js";
-import { U as Users } from "./users-BHdFD3Oe.js";
+import { c as createLucideIcon, r as reactExports, j as jsxRuntimeExports, b as cn, m as motion, C as COMPANY_NAME, Z as Zap, B as Button, L as Link } from "./index-CWaMM7uw.js";
+import { B as Badge } from "./badge-HKWYsiW8.js";
+import { C as Card, a as CardContent } from "./card-CstES4Ou.js";
+import { P as Primitive } from "./index-elSd_6fr.js";
+import { C as CircleCheck } from "./circle-check-ClyeP4GT.js";
+import { U as Users } from "./users-CI7xec68.js";
+import { R as Rocket } from "./rocket-BqfUmwbm.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
  * This source code is licensed under the ISC license.
  * See the LICENSE file in the root directory of this source tree.
  */
-const __iconNode$3 = [
+const __iconNode$4 = [
   [
     "path",
     {
@@ -21,7 +21,18 @@ const __iconNode$3 = [
   ],
   ["circle", { cx: "12", cy: "8", r: "6", key: "1vp47v" }]
 ];
-const Award = createLucideIcon("award", __iconNode$3);
+const Award = createLucideIcon("award", __iconNode$4);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$3 = [
+  ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
+  ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
+];
+const Briefcase = createLucideIcon("briefcase", __iconNode$3);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -29,17 +40,6 @@ const Award = createLucideIcon("award", __iconNode$3);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode$2 = [
-  ["path", { d: "M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16", key: "jecpp" }],
-  ["rect", { width: "20", height: "14", x: "2", y: "6", rx: "2", key: "i6l2r4" }]
-];
-const Briefcase = createLucideIcon("briefcase", __iconNode$2);
-/**
- * @license lucide-react v0.511.0 - ISC
- *
- * This source code is licensed under the ISC license.
- * See the LICENSE file in the root directory of this source tree.
- */
-const __iconNode$1 = [
   [
     "path",
     {
@@ -50,7 +50,20 @@ const __iconNode$1 = [
   ["path", { d: "M9 18h6", key: "x1upvd" }],
   ["path", { d: "M10 22h4", key: "ceow96" }]
 ];
-const Lightbulb = createLucideIcon("lightbulb", __iconNode$1);
+const Lightbulb = createLucideIcon("lightbulb", __iconNode$2);
+/**
+ * @license lucide-react v0.511.0 - ISC
+ *
+ * This source code is licensed under the ISC license.
+ * See the LICENSE file in the root directory of this source tree.
+ */
+const __iconNode$1 = [
+  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
+  ["path", { d: "M8 14s1.5 2 4 2 4-2 4-2", key: "1y1vjs" }],
+  ["line", { x1: "9", x2: "9.01", y1: "9", y2: "9", key: "yxxnd0" }],
+  ["line", { x1: "15", x2: "15.01", y1: "9", y2: "9", key: "1p4y9e" }]
+];
+const Smile = createLucideIcon("smile", __iconNode$1);
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -58,12 +71,15 @@ const Lightbulb = createLucideIcon("lightbulb", __iconNode$1);
  * See the LICENSE file in the root directory of this source tree.
  */
 const __iconNode = [
-  ["circle", { cx: "12", cy: "12", r: "10", key: "1mglay" }],
-  ["path", { d: "M8 14s1.5 2 4 2 4-2 4-2", key: "1y1vjs" }],
-  ["line", { x1: "9", x2: "9.01", y1: "9", y2: "9", key: "yxxnd0" }],
-  ["line", { x1: "15", x2: "15.01", y1: "9", y2: "9", key: "1p4y9e" }]
+  [
+    "path",
+    {
+      d: "M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z",
+      key: "r04s7s"
+    }
+  ]
 ];
-const Smile = createLucideIcon("smile", __iconNode);
+const Star = createLucideIcon("star", __iconNode);
 var NAME = "Separator";
 var DEFAULT_ORIENTATION = "horizontal";
 var ORIENTATIONS = ["horizontal", "vertical"];
@@ -306,9 +322,25 @@ function About() {
                     whileInView: { opacity: 1, y: 0 },
                     viewport: { once: true },
                     transition: { duration: 0.5, delay: i * 0.1 },
+                    whileHover: {
+                      scale: 1.05,
+                      rotateX: 3,
+                      rotateY: i % 2 === 0 ? 3 : -3,
+                      transition: { type: "spring", stiffness: 300 }
+                    },
+                    style: {
+                      perspective: "600px",
+                      transformStyle: "preserve-3d"
+                    },
                     "data-ocid": `about.stat.${i + 1}`,
-                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "glass-card shadow-elevated h-full", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex flex-col items-center justify-center py-8 text-center gap-3", children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-12 w-12 items-center justify-center rounded-xl gradient-primary", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "text-primary-foreground", size: 22 }) }),
+                    children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "glass-card shadow-elevated h-full hover:shadow-glow transition-smooth", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "flex flex-col items-center justify-center py-8 text-center gap-3", children: [
+                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-12 w-12 items-center justify-center rounded-xl gradient-primary transition-smooth", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                        Icon,
+                        {
+                          className: "text-primary-foreground icon-spin",
+                          size: 22
+                        }
+                      ) }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-4xl font-bold gradient-text leading-none", children: stat.value }),
                       /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "text-sm text-muted-foreground font-body", children: stat.label })
                     ] }) })
@@ -367,11 +399,15 @@ function About() {
                   whileInView: { opacity: 1, scale: 1 },
                   viewport: { once: true },
                   transition: { duration: 0.35, delay: i * 0.03 },
+                  whileHover: {
+                    scale: 1.08,
+                    transition: { type: "spring", stiffness: 400 }
+                  },
                   children: /* @__PURE__ */ jsxRuntimeExports.jsx(
                     Badge,
                     {
                       variant: "secondary",
-                      className: "px-4 py-2 text-sm font-body font-medium bg-card border border-border/60 text-foreground hover:border-primary/50 hover:text-primary transition-smooth cursor-default",
+                      className: "px-4 py-2 text-sm font-body font-medium bg-card border border-border/60 text-foreground hover:border-primary/50 hover:text-primary hover:bg-primary/5 hover:shadow-glow-sm transition-smooth cursor-default btn-shine",
                       children: skill
                     }
                   )
@@ -423,10 +459,16 @@ function About() {
                 viewport: { once: true },
                 transition: { duration: 0.5, delay: i * 0.1 },
                 "data-ocid": `about.achievement.${i + 1}`,
-                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "glass-card shadow-card h-full hover:border-primary/30 transition-smooth group", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-6 flex gap-5", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "shrink-0 flex h-11 w-11 items-center justify-center rounded-xl gradient-primary shadow-card group-hover:scale-105 transition-smooth", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Icon, { className: "text-primary-foreground", size: 20 }) }),
+                children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "glass-card shadow-card h-full hover:border-primary/30 hover:shadow-glow transition-smooth group", children: /* @__PURE__ */ jsxRuntimeExports.jsxs(CardContent, { className: "p-6 flex gap-5", children: [
+                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "shrink-0 flex h-11 w-11 items-center justify-center rounded-xl gradient-primary shadow-card group-hover:shadow-glow transition-smooth", children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+                    Icon,
+                    {
+                      className: "text-primary-foreground icon-spin",
+                      size: 20
+                    }
+                  ) }),
                   /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { children: [
-                    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-semibold text-foreground text-lg leading-snug", children: item.title }),
+                    /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display font-semibold text-foreground text-lg leading-snug group-hover:text-primary transition-smooth", children: item.title }),
                     /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-2 text-sm text-muted-foreground leading-relaxed", children: item.description })
                   ] })
                 ] }) })
@@ -434,102 +476,6 @@ function About() {
               item.title
             );
           }) })
-        ] })
-      }
-    ),
-    /* @__PURE__ */ jsxRuntimeExports.jsx(
-      "section",
-      {
-        "aria-labelledby": "team-heading",
-        className: "bg-muted/30 border-y border-border/40 py-20 md:py-28",
-        children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "container mx-auto px-4 sm:px-6 lg:px-8", children: [
-          /* @__PURE__ */ jsxRuntimeExports.jsxs(
-            motion.div,
-            {
-              initial: { opacity: 0, y: 20 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              transition: { duration: 0.55 },
-              className: "text-center max-w-xl mx-auto mb-14",
-              children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "h2",
-                  {
-                    id: "team-heading",
-                    className: "font-display text-3xl font-bold text-foreground sm:text-4xl",
-                    children: [
-                      "Meet the ",
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "gradient-text", children: "Team" })
-                    ]
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "mt-4 text-muted-foreground", children: "The creative minds and strategists behind every project." })
-              ]
-            }
-          ),
-          /* @__PURE__ */ jsxRuntimeExports.jsx(
-            motion.div,
-            {
-              initial: { opacity: 0, y: 28 },
-              whileInView: { opacity: 1, y: 0 },
-              viewport: { once: true },
-              transition: { duration: 0.6 },
-              className: "mx-auto max-w-2xl",
-              "data-ocid": "about.founder.card",
-              children: /* @__PURE__ */ jsxRuntimeExports.jsx(Card, { className: "glass-card shadow-elevated overflow-hidden", children: /* @__PURE__ */ jsxRuntimeExports.jsx(CardContent, { className: "p-0", children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "flex flex-col sm:flex-row", children: [
-                /* @__PURE__ */ jsxRuntimeExports.jsxs(
-                  "div",
-                  {
-                    className: "relative flex-shrink-0 flex items-center justify-center w-full sm:w-48 h-48 sm:h-auto gradient-primary",
-                    "aria-hidden": "true",
-                    children: [
-                      /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "flex h-24 w-24 items-center justify-center rounded-full bg-primary-foreground/10 border-2 border-primary-foreground/20 shadow-elevated", children: /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "font-display text-4xl font-bold text-primary-foreground select-none", children: "AR" }) }),
-                      /* @__PURE__ */ jsxRuntimeExports.jsx(
-                        "div",
-                        {
-                          className: "absolute inset-0 opacity-10",
-                          style: {
-                            backgroundImage: "repeating-linear-gradient(0deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px), repeating-linear-gradient(90deg, transparent, transparent 20px, rgba(255,255,255,0.3) 20px, rgba(255,255,255,0.3) 21px)"
-                          }
-                        }
-                      )
-                    ]
-                  }
-                ),
-                /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "p-8 flex flex-col justify-center", children: [
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Badge,
-                    {
-                      variant: "outline",
-                      className: "w-fit mb-3 border-primary/40 text-primary text-xs",
-                      children: "Leadership"
-                    }
-                  ),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("h3", { className: "font-display text-2xl font-bold text-foreground", children: "Alex Rivera" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("p", { className: "text-primary font-body font-medium mt-1 text-sm", children: "Founder & Creative Director" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx(Separator, { className: "my-4 bg-border/50" }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsxs("p", { className: "text-muted-foreground text-sm leading-relaxed", children: [
-                    "With over a decade of experience spanning digital marketing, product design, and full-stack web development, Alex founded ",
-                    COMPANY_NAME,
-                    " to bridge the gap between creative excellence and business performance. Having worked with startups, D2C brands, and enterprise clients across India and Southeast Asia, Alex brings a rare combination of design intuition and data-driven strategy to every engagement."
-                  ] }),
-                  /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "mt-5 flex flex-wrap gap-2", children: [
-                    "Meta Certified",
-                    "Figma Expert",
-                    "Shopify Partner"
-                  ].map((tag) => /* @__PURE__ */ jsxRuntimeExports.jsx(
-                    Badge,
-                    {
-                      variant: "secondary",
-                      className: "text-xs font-body bg-card border border-border/60 text-foreground",
-                      children: tag
-                    },
-                    tag
-                  )) })
-                ] })
-              ] }) }) })
-            }
-          )
         ] })
       }
     ),
@@ -576,7 +522,7 @@ function About() {
                   {
                     asChild: true,
                     size: "lg",
-                    className: "gradient-primary text-primary-foreground font-display font-semibold px-8 shadow-elevated hover:opacity-90 transition-smooth",
+                    className: "gradient-primary text-primary-foreground font-display font-semibold px-8 shadow-elevated hover:shadow-glow hover:scale-[1.03] transition-smooth btn-shine",
                     "data-ocid": "about.cta.primary_button",
                     children: /* @__PURE__ */ jsxRuntimeExports.jsx(Link, { to: "/contact", children: "Start a Project" })
                   }

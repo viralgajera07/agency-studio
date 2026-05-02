@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Zap } from "lucide-react";
+import { motion } from "motion/react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { COMPANY_EMAIL, NAV_LINKS, WHATSAPP_NUMBER } from "../data/sampleData";
 
@@ -11,11 +12,47 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
 };
 
 const SOCIAL = [
-  { platform: "LinkedIn", icon: "linkedin", href: "https://linkedin.com" },
-  { platform: "Twitter / X", icon: "twitter", href: "https://twitter.com" },
-  { platform: "Instagram", icon: "instagram", href: "https://instagram.com" },
-  { platform: "Facebook", icon: "facebook", href: "https://facebook.com" },
+  {
+    platform: "LinkedIn",
+    icon: "linkedin",
+    href: "https://linkedin.com",
+    hoverColor: "hover:bg-blue-600/20 hover:text-blue-400",
+  },
+  {
+    platform: "Twitter / X",
+    icon: "twitter",
+    href: "https://twitter.com",
+    hoverColor: "hover:bg-sky-500/20 hover:text-sky-400",
+  },
+  {
+    platform: "Instagram",
+    icon: "instagram",
+    href: "https://instagram.com",
+    hoverColor: "hover:bg-pink-500/20 hover:text-pink-400",
+  },
+  {
+    platform: "Facebook",
+    icon: "facebook",
+    href: "https://facebook.com",
+    hoverColor: "hover:bg-blue-500/20 hover:text-blue-500",
+  },
 ];
+
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.08 } },
+};
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+    },
+  },
+};
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -31,19 +68,25 @@ export function Footer() {
     >
       {/* Main footer content */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-4"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
           {/* Brand column */}
-          <div className="lg:col-span-1">
+          <motion.div variants={itemVariants} className="lg:col-span-1">
             <Link
               to="/"
-              className="flex items-center gap-2 mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
-              aria-label="Nexus Digital — Home"
+              className="flex items-center gap-2 mb-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm group"
+              aria-label="Korvex — Home"
             >
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary">
+              <div className="flex h-8 w-8 items-center justify-center rounded-lg gradient-primary transition-smooth group-hover:scale-110 ">
                 <Zap className="h-4 w-4 text-white" aria-hidden="true" />
               </div>
               <span className="font-display text-lg font-bold tracking-tight text-foreground">
-                Nexus<span className="gradient-text">Digital</span>
+                Kor<span className="gradient-text">vex</span>
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
@@ -66,17 +109,20 @@ export function Footer() {
                     rel="noopener noreferrer"
                     data-ocid={`footer.social_${s.icon}`}
                     aria-label={`Follow us on ${s.platform}`}
-                    className="flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground hover:bg-primary/20 hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                    className={`flex h-9 w-9 items-center justify-center rounded-lg bg-muted text-muted-foreground transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:-translate-y-1 ${s.hoverColor}`}
+                    style={{
+                      transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)",
+                    }}
                   >
                     {Icon && <Icon className="h-4 w-4" />}
                   </a>
                 );
               })}
             </div>
-          </div>
+          </motion.div>
 
           {/* Quick Links */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">
               Quick Links
             </h3>
@@ -86,17 +132,17 @@ export function Footer() {
                   <Link
                     to={link.href}
                     data-ocid={`footer.nav_${link.label.toLowerCase()}`}
-                    className="text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                    className="text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm nav-underline"
                   >
                     {link.label}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Services */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">
               Services
             </h3>
@@ -110,17 +156,17 @@ export function Footer() {
                 <li key={s}>
                   <Link
                     to="/services"
-                    className="text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                    className="text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm nav-underline"
                   >
                     {s}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Contact */}
-          <div>
+          <motion.div variants={itemVariants}>
             <h3 className="font-display font-semibold text-foreground mb-4 text-sm uppercase tracking-wider">
               Contact Us
             </h3>
@@ -129,9 +175,12 @@ export function Footer() {
                 <a
                   href={`mailto:${COMPANY_EMAIL}`}
                   data-ocid="footer.email_link"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm group"
                 >
-                  <Mail className="h-4 w-4 flex-shrink-0" aria-hidden="true" />
+                  <Mail
+                    className="h-4 w-4 flex-shrink-0 group-hover:scale-110 transition-smooth"
+                    aria-hidden="true"
+                  />
                   <span>{COMPANY_EMAIL}</span>
                 </a>
               </li>
@@ -141,13 +190,13 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   data-ocid="footer.whatsapp_link"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#25D366] transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-[#25D366] transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm group"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="h-4 w-4 flex-shrink-0"
+                    className="h-4 w-4 flex-shrink-0 group-hover:scale-110 transition-smooth"
                     aria-hidden="true"
                   >
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
@@ -157,15 +206,25 @@ export function Footer() {
                 </a>
               </li>
             </ul>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
 
       {/* Bottom bar */}
-      <div className="border-t border-border">
+      <div className="border-t border-border relative overflow-hidden">
+        {/* Animated gradient divider */}
+        <div
+          className="absolute top-0 left-0 right-0 h-px animate-gradient-shift"
+          style={{
+            background:
+              "linear-gradient(90deg, transparent 0%, oklch(var(--primary)) 30%, oklch(var(--accent)) 70%, transparent 100%)",
+            backgroundSize: "200% 100%",
+          }}
+          aria-hidden="true"
+        />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-muted-foreground text-center sm:text-left">
-            © {year} Nexus Digital. All rights reserved.
+            © {year} Korvex. All rights reserved.
           </p>
           <p className="text-xs text-muted-foreground text-center sm:text-right">
             Built with love using{" "}

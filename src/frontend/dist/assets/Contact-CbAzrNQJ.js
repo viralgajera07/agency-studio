@@ -1,7 +1,7 @@
-import { c as createLucideIcon, j as jsxRuntimeExports, b as cn, r as reactExports, B as Button, F as FaWhatsapp, d as COMPANY_EMAIL, M as Mail, e as SOCIAL_LINKS, f as WHATSAPP_MESSAGE, g as WHATSAPP_NUMBER, h as FaFacebook, i as FaInstagram, k as FaTwitter, l as FaLinkedin } from "./index-cdHKX1FX.js";
-import { B as Badge } from "./badge-BVWNPwr0.js";
-import { P as Primitive } from "./index-CIzIc9uW.js";
-import { C as CircleCheck } from "./circle-check-CY1yxMov.js";
+import { c as createLucideIcon, j as jsxRuntimeExports, b as cn, r as reactExports, B as Button, F as FaWhatsapp, d as COMPANY_EMAIL, M as Mail, e as SOCIAL_LINKS, f as WHATSAPP_MESSAGE, g as WHATSAPP_NUMBER, k as FaFacebook, l as FaInstagram, n as FaTwitter, o as FaLinkedin } from "./index-CWaMM7uw.js";
+import { B as Badge } from "./badge-HKWYsiW8.js";
+import { P as Primitive } from "./index-elSd_6fr.js";
+import { C as CircleCheck } from "./circle-check-ClyeP4GT.js";
 /**
  * @license lucide-react v0.511.0 - ISC
  *
@@ -352,7 +352,7 @@ function Contact() {
                 type: "submit",
                 "data-ocid": "contact.submit_button",
                 disabled: isSubmitting,
-                className: "w-full gradient-primary text-white font-semibold h-12 rounded-xl text-sm tracking-wide border-0 hover:opacity-90 transition-smooth shadow-card",
+                className: "w-full gradient-primary text-white font-semibold h-12 rounded-xl text-sm tracking-wide border-0 hover:shadow-glow hover:scale-[1.02] transition-smooth shadow-card btn-shine",
                 children: isSubmitting ? /* @__PURE__ */ jsxRuntimeExports.jsxs("span", { className: "flex items-center gap-2", children: [
                   /* @__PURE__ */ jsxRuntimeExports.jsx(
                     "span",
@@ -400,7 +400,7 @@ function Contact() {
               target: "_blank",
               rel: "noopener noreferrer",
               "data-ocid": "contact.whatsapp_button",
-              className: "flex items-center justify-center gap-2.5 w-full rounded-xl py-3 px-4 font-semibold text-sm text-white transition-smooth hover:opacity-90 hover:shadow-[0_8px_24px_rgba(37,211,102,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400",
+              className: "flex items-center justify-center gap-2.5 w-full rounded-xl py-3 px-4 font-semibold text-sm text-white transition-smooth hover:shadow-[0_8px_24px_rgba(37,211,102,0.45)] hover:scale-[1.03] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400 btn-shine",
               style: { background: "#25D366" },
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx(FaWhatsapp, { className: "h-5 w-5", "aria-hidden": "true" }),
@@ -416,7 +416,7 @@ function Contact() {
             {
               href: `mailto:${COMPANY_EMAIL}`,
               "data-ocid": "contact.email_link",
-              className: "flex items-center gap-3 group",
+              className: "flex items-center gap-3 group hover:-translate-y-0.5 transition-smooth",
               "aria-label": `Email us at ${COMPANY_EMAIL}`,
               children: [
                 /* @__PURE__ */ jsxRuntimeExports.jsx("span", { className: "rounded-lg p-2.5 bg-primary/10 text-primary group-hover:bg-primary/20 transition-smooth", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Mail, { className: "h-5 w-5", "aria-hidden": "true" }) }),
@@ -445,7 +445,7 @@ function Contact() {
               rel: "noopener noreferrer",
               "data-ocid": `contact.social.${link.icon}`,
               "aria-label": `Follow us on ${link.platform}`,
-              className: "flex items-center justify-center rounded-xl w-11 h-11 bg-muted hover:bg-primary/20 hover:text-primary text-muted-foreground transition-smooth border border-border hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+              className: "flex items-center justify-center rounded-xl w-11 h-11 bg-muted hover:bg-primary/20 hover:text-primary text-muted-foreground transition-smooth border border-border hover:border-primary/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring hover:-translate-y-1 hover:shadow-glow-sm",
               children: SOCIAL_ICON_MAP[link.icon]
             },
             link.platform
