@@ -17,18 +17,8 @@ import {
   Zap,
 } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
-import {
-  PORTFOLIO_ITEMS,
-  PROCESS_STEPS,
-  SERVICES,
-  WHY_CHOOSE_US,
-} from "../data/sampleData";
-import type {
-  PortfolioItem,
-  ProcessStep,
-  Service,
-  WhyChooseUsItem,
-} from "../types";
+import { PROCESS_STEPS, SERVICES, WHY_CHOOSE_US } from "../data/sampleData";
+import type { ProcessStep, Service, WhyChooseUsItem } from "../types";
 
 const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   TrendingUp,
@@ -42,13 +32,6 @@ const ICON_MAP: Record<string, React.ComponentType<{ className?: string }>> = {
   Compass,
   PenTool,
   Rocket,
-};
-
-const CATEGORY_BADGE: Record<string, string> = {
-  "E-commerce": "bg-primary/20 text-primary border-primary/30",
-  "UI/UX": "bg-accent/20 text-accent border-accent/30",
-  Ads: "bg-muted text-foreground border-border",
-  Website: "bg-secondary text-secondary-foreground border-border",
 };
 
 const HERO_SERVICES = [
@@ -111,7 +94,7 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
         transition: { type: "spring", stiffness: 300, damping: 20 },
       }}
       data-ocid={`services.item.${index + 1}`}
-      className="group border-glow"
+      className="group"
     >
       <Card className="h-full bg-card border-border shadow-card hover:shadow-glow transition-smooth hover:border-primary/40">
         <CardContent className="p-6 flex flex-col gap-4">
@@ -167,59 +150,6 @@ function WhyCard({ item, index }: { item: WhyChooseUsItem; index: number }) {
         </p>
       </div>
     </motion.div>
-  );
-}
-
-function PortfolioCard({
-  item,
-  index,
-}: { item: PortfolioItem; index: number }) {
-  const badgeClass =
-    CATEGORY_BADGE[item.category] ??
-    "bg-secondary text-secondary-foreground border-border";
-  return (
-    <motion.article
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: (index % 3) * 0.1 }}
-      whileHover={{ y: -4, transition: { type: "spring", stiffness: 300 } }}
-      data-ocid={`portfolio.item.${index + 1}`}
-      className="group"
-    >
-      <Card className="overflow-hidden bg-card border-border shadow-card hover:shadow-glow hover:border-primary/30 transition-smooth">
-        <div className="relative overflow-hidden aspect-[16/10]">
-          <img
-            src={item.image}
-            alt={item.title}
-            className="w-full h-full object-cover group-hover:scale-110 transition-all duration-500"
-            loading="lazy"
-          />
-          {/* Slide-up overlay */}
-          <div className="portfolio-overlay">
-            <p className="text-white font-display font-semibold text-sm leading-tight">
-              {item.title}
-            </p>
-            <p className="text-white/80 text-xs mt-0.5 line-clamp-2">
-              {item.description}
-            </p>
-          </div>
-          <Badge
-            className={`absolute top-3 left-3 text-xs font-medium border backdrop-blur-sm ${badgeClass}`}
-          >
-            {item.category}
-          </Badge>
-        </div>
-        <CardContent className="p-4">
-          <h3 className="font-display font-semibold text-foreground text-base mb-1 group-hover:text-primary transition-smooth">
-            {item.title}
-          </h3>
-          <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2">
-            {item.description}
-          </p>
-        </CardContent>
-      </Card>
-    </motion.article>
   );
 }
 
@@ -394,7 +324,7 @@ export default function HomePage() {
                       perspective: "600px",
                       transformStyle: "preserve-3d",
                     }}
-                    className={`group relative rounded-xl border bg-gradient-to-br ${svc.color} p-3.5 cursor-pointer border-glow`}
+                    className={`group relative rounded-xl border bg-gradient-to-br ${svc.color} p-3.5 cursor-pointer`}
                   >
                     <div
                       className={`w-8 h-8 rounded-lg ${svc.iconBg} border border-current/10 flex items-center justify-center mb-2.5`}
@@ -426,16 +356,6 @@ export default function HomePage() {
                 >
                   Book a Free Call
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Button>
-              </Link>
-              <Link to="/portfolio">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="font-semibold font-display px-8 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth"
-                  data-ocid="hero.secondary_button"
-                >
-                  View Our Work
                 </Button>
               </Link>
             </motion.div>
@@ -581,64 +501,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── PORTFOLIO PREVIEW ── */}
-      <section
-        id="portfolio"
-        className="py-20 lg:py-28 bg-muted/30"
-        aria-labelledby="portfolio-heading"
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45 }}
-            className="text-center mb-14"
-          >
-            <Badge className="mb-4 border border-accent/40 bg-accent/10 text-accent font-medium px-3 py-1">
-              Our Work
-            </Badge>
-            <h2
-              id="portfolio-heading"
-              className="font-display text-4xl sm:text-5xl font-bold text-foreground mb-4"
-            >
-              Featured <span className="gradient-text">Projects</span>
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              A curated selection of projects we&apos;ve shipped — from growth
-              campaigns to pixel-perfect digital products.
-            </p>
-          </motion.div>
-
-          <div
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-            data-ocid="portfolio.list"
-          >
-            {PORTFOLIO_ITEMS.map((item, i) => (
-              <PortfolioCard key={item.id} item={item} index={i} />
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-            className="text-center mt-10"
-          >
-            <Link to="/portfolio">
-              <Button
-                variant="outline"
-                className="font-display font-semibold border-primary/40 hover:bg-primary/10 hover:border-primary hover:shadow-glow-sm hover:scale-[1.02] transition-smooth btn-shine"
-                data-ocid="portfolio.view_all_button"
-              >
-                View All Projects <ArrowRight className="ml-2 w-4 h-4" />
-              </Button>
-            </Link>
-          </motion.div>
-        </div>
-      </section>
-
       {/* ── PROCESS ── */}
       <section
         id="process"
@@ -749,16 +611,6 @@ export default function HomePage() {
                     data-ocid="cta.primary_button"
                   >
                     Book a Free Call <ArrowRight className="ml-2 w-5 h-5" />
-                  </Button>
-                </Link>
-                <Link to="/portfolio">
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="font-display font-semibold px-10 py-3 rounded-xl border-border hover:border-primary/50 hover:bg-primary/10 hover:shadow-glow-sm hover:scale-[1.02] transition-smooth"
-                    data-ocid="cta.secondary_button"
-                  >
-                    See Our Work
                   </Button>
                 </Link>
               </div>

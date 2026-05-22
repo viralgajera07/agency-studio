@@ -3,8 +3,19 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { PORTFOLIO_ITEMS } from "../data/sampleData";
-import type { PortfolioItem } from "../types";
+// Portfolio items and type defined locally (page kept for reference)
+type PortfolioItemCategory = "E-commerce" | "UI/UX" | "Ads" | "Website";
+
+interface PortfolioItem {
+  id: string;
+  title: string;
+  description: string;
+  image: string;
+  category: PortfolioItemCategory;
+  tags: string[];
+}
+
+const PORTFOLIO_ITEMS: PortfolioItem[] = [];
 
 // ─── Category config ─────────────────────────────────────────────────────────
 

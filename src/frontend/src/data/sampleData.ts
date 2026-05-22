@@ -1,6 +1,5 @@
 import type {
   NavLink,
-  PortfolioItem,
   ProcessStep,
   Service,
   SocialLink,
@@ -11,7 +10,6 @@ import type {
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "/" },
   { label: "Services", href: "/services" },
-  { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -83,110 +81,6 @@ export const SERVICES: Service[] = [
       "Payment Gateway Integration",
     ],
     category: "ecommerce",
-  },
-];
-
-export const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  {
-    id: "1",
-    title: "NovaMart E-commerce Store",
-    category: "E-commerce",
-    image: "/assets/generated/portfolio-ecommerce.dim_800x560.jpg",
-    description: "Shopify store with custom theme and 3x conversion uplift.",
-    tags: ["Shopify", "UX Design", "Conversion"],
-  },
-  {
-    id: "2",
-    title: "FinEdge Financial App",
-    category: "UI/UX",
-    image: "/assets/generated/portfolio-uiux.dim_800x560.jpg",
-    description: "Mobile banking app redesign improving user retention by 40%.",
-    tags: ["Mobile", "Figma", "Prototyping"],
-  },
-  {
-    id: "3",
-    title: "SolarPeak Lead Campaign",
-    category: "Ads",
-    image: "/assets/generated/portfolio-ads.dim_800x560.jpg",
-    description: "Meta Ads campaign generating 500+ leads at ₹28 CPL.",
-    tags: ["Meta Ads", "Lead Gen", "Facebook"],
-  },
-  {
-    id: "4",
-    title: "Archon Architecture Website",
-    category: "Website",
-    image: "/assets/generated/portfolio-website.dim_800x560.jpg",
-    description: "Premium studio website with award-winning visual design.",
-    tags: ["React", "Design", "SEO"],
-  },
-  {
-    id: "5",
-    title: "PureGlow Skincare Brand",
-    category: "E-commerce",
-    image: "/assets/generated/portfolio-skincare.dim_800x560.jpg",
-    description: "ShopDeck store with branded product photography and ads.",
-    tags: ["ShopDeck", "Branding", "Ads"],
-  },
-  {
-    id: "6",
-    title: "EduFlow Learning Platform",
-    category: "UI/UX",
-    image: "/assets/generated/portfolio-edtech.dim_800x560.jpg",
-    description: "EdTech dashboard design serving 12,000+ active learners.",
-    tags: ["Dashboard", "UX", "Design System"],
-  },
-  {
-    id: "7",
-    title: "UrbanNest Real Estate Site",
-    category: "Website",
-    image: "",
-    description:
-      "Property listing website with map integration and lead capture.",
-    tags: ["WordPress", "Maps", "Lead Forms"],
-  },
-  {
-    id: "8",
-    title: "FitZone Gym Campaign",
-    category: "Ads",
-    image: "",
-    description: "Instagram campaign driving 800+ gym memberships in 60 days.",
-    tags: ["Instagram Ads", "Retargeting", "ROAS"],
-  },
-  {
-    id: "9",
-    title: "LuxeWear Fashion Store",
-    category: "E-commerce",
-    image: "",
-    description:
-      "WooCommerce fashion store with size-guide and wishlist features.",
-    tags: ["WordPress", "WooCommerce", "Fashion"],
-  },
-  {
-    id: "10",
-    title: "MedCare Clinic App",
-    category: "UI/UX",
-    image: "",
-    description:
-      "Patient booking and telehealth app with accessibility-first design.",
-    tags: ["iOS", "Android", "Healthcare"],
-  },
-  {
-    id: "11",
-    title: "TechVault SaaS Website",
-    category: "Website",
-    image: "",
-    description:
-      "SaaS landing page with pricing, demo signup, and blog sections.",
-    tags: ["React", "Animations", "Conversion"],
-  },
-  {
-    id: "12",
-    title: "BakeBuddy Food Brand",
-    category: "Ads",
-    image: "",
-    description:
-      "Facebook Ads for D2C bakery brand achieving 4.2x ROAS in 30 days.",
-    tags: ["Facebook Ads", "D2C", "Creative"],
   },
 ];
 

@@ -337,29 +337,6 @@
     width: 100%;
   }
 
-  /* ── Portfolio card overlay ──────────────────────── */
-  .portfolio-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.25rem;
-    background: linear-gradient(
-      to top,
-      oklch(var(--primary) / 0.92) 0%,
-      oklch(var(--accent) / 0.75) 60%,
-      transparent 100%
-    );
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.35s ease, transform 0.35s ease;
-  }
-  .group:hover .portfolio-overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
   /* ── Icon spin on card hover ─────────────────────── */
   .group:hover .icon-spin {
     transform: rotate(360deg);

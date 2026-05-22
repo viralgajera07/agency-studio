@@ -7,15 +7,6 @@ export interface Service {
   category: "marketing" | "web" | "uiux" | "ecommerce";
 }
 
-export interface PortfolioItem {
-  id: string;
-  title: string;
-  category: "UI/UX" | "Website" | "Ads" | "E-commerce";
-  image: string;
-  description: string;
-  tags: string[];
-}
-
 export interface Testimonial {
   id: string;
   name: string;

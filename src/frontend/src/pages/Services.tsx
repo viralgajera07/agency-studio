@@ -465,16 +465,6 @@ export default function Services() {
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Button>
               </Link>
-              <Link to="/portfolio">
-                <Button
-                  data-ocid="services.cta.view_work_button"
-                  variant="outline"
-                  size="lg"
-                  className="font-semibold text-base px-8 h-12 border-border hover:bg-muted transition-smooth"
-                >
-                  View Our Work
-                </Button>
-              </Link>
             </div>
           </motion.div>
         </div>

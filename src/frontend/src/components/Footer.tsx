@@ -148,17 +148,18 @@ export function Footer() {
             </h3>
             <ul className="flex flex-col gap-2">
               {[
-                "Digital Marketing",
-                "Website Development",
-                "UI/UX Design",
-                "E-commerce Solutions",
+                { label: "Digital Marketing", href: "/services" },
+                { label: "Website Development", href: "/services" },
+                { label: "UI/UX Design", href: "/services" },
+                { label: "E-commerce Solutions", href: "/services" },
+                { label: "Rebuild Your Website", href: "/rebuild-website" },
               ].map((s) => (
-                <li key={s}>
+                <li key={s.label}>
                   <Link
-                    to="/services"
+                    to={s.href}
                     className="text-sm text-muted-foreground hover:text-primary transition-smooth focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm nav-underline"
                   >
-                    {s}
+                    {s.label}
                   </Link>
                 </li>
               ))}

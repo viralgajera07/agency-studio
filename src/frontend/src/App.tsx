@@ -14,7 +14,6 @@ import { Layout } from "./components/Layout";
 // Lazy-load pages
 const HomePage = lazy(() => import("./pages/Home"));
 const ServicesPage = lazy(() => import("./pages/Services"));
-const PortfolioPage = lazy(() => import("./pages/Portfolio"));
 const AboutPage = lazy(() => import("./pages/About"));
 const ContactPage = lazy(() => import("./pages/Contact"));
 
@@ -110,12 +109,6 @@ const serviceRebuildWebsiteRoute = createRoute({
   component: ServiceRebuildWebsitePage,
 });
 
-const portfolioRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: "/portfolio",
-  component: PortfolioPage,
-});
-
 const aboutRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/about",
@@ -142,7 +135,6 @@ const routeTree = rootRoute.addChildren([
   serviceUIUXRoute,
   serviceEcommerceRoute,
   serviceRebuildWebsiteRoute,
-  portfolioRoute,
   aboutRoute,
   contactRoute,
   catchAllRoute,

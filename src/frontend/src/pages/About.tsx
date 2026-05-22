@@ -424,15 +424,6 @@ export default function About() {
                 >
                   <Link to="/contact">Start a Project</Link>
                 </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="border-border/60 text-foreground hover:border-primary/50 hover:text-primary font-display font-semibold px-8 transition-smooth"
-                  data-ocid="about.cta.secondary_button"
-                >
-                  <Link to="/portfolio">View Our Work</Link>
-                </Button>
               </div>
             </div>
           </motion.div>

@@ -280,7 +280,7 @@ export default function ServiceDigitalMarketing() {
                   {[
                     { label: "Avg. CPL Reduction", value: "40%" },
                     { label: "Avg. ROAS", value: "4.2×" },
-                    { label: "Campaigns Managed", value: "50+" },
+                    { label: "Campaigns Managed", value: "500+" },
                   ].map((stat) => (
                     <div
                       key={stat.label}
@@ -346,7 +346,9 @@ export default function ServiceDigitalMarketing() {
                 className="flex items-start gap-4 p-5 rounded-xl bg-card border border-border hover:border-primary/30 hover:shadow-glow hover:-translate-y-1 transition-smooth hover:bg-primary/5 border-glow group"
                 data-ocid={`dm.provide.item.${i + 1}`}
               >
-                <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:border-primary group-hover:text-white icon-bounce transition-smooth" />
+                <span className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:border-primary group-hover:text-white icon-bounce transition-smooth">
+                  {item.icon}
+                </span>
                 <div className="min-w-0">
                   <p className="font-display font-semibold text-foreground leading-snug mb-1">
                     {item.label}
